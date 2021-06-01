@@ -93,7 +93,7 @@ import Relay from './components/ReplayProfile/Relay'
   
  </Hydrate>
 
- <ReactQueryDevtools initialIsOpen={true} />
+ <ReactQueryDevtools  />
  </QueryClientProvider>
 
   </ThemeProvider>
