@@ -50,14 +50,20 @@ const data = [
     amt: 2100
   }
 ];
-const fetchzone = async () => {
-    const res = await fetch("/api/getNetwork");
+const fetchzone = async (id) => {
+    
+  const idd = id.queryKey[1]
+  console.log(id.queryKey[1])
+  const res = await fetch(`/api/getdata/${id.queryKey[1]}`);
     return res.json();
   };
 function Dash({id}) {
-    const { data, status  , isFetching } = useQuery("Zone", fetchzone ,
+    const { data, status  , isFetching } = useQuery(["Zone", id ] ,fetchzone ,
   
-    
+    {
+       
+      refetchInterval: 1000,
+    }
     );
     let history = useHistory();
     return (
@@ -76,7 +82,7 @@ function Dash({id}) {
     
 <>
   
-  {(data.filter(sets => sets.zone === id ).length) === 0 ?
+  {(data.length) === 0 ?
         (
             <div className='not-found' >
 

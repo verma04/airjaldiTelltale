@@ -57,7 +57,11 @@ const  result = data.filter(d => {var time = d.reading_time
      });
 
      console.log(result)
-
+     const date = Date().split(" ");
+     // we use a date string to generate our filename.
+     const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
+     // ticket title. and margin-top + margin-left
+   
 //     const [startDate, setStartDate] = useState(new Date());
 //     const [endDate, setendDate] = useState();
    
@@ -128,7 +132,7 @@ return (
               Download  Pdf
             </button>
 
-    <CSVLink data={result}><button>Download CSV</button></CSVLink>
+    <CSVLink data={result} filename={`report_${dateStr}.csv`}  ><button>Download CSV</button></CSVLink>
     </div>
   </>
   )

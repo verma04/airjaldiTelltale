@@ -532,6 +532,66 @@ async (req, res) => {
 }
 )
 
+router.get('/getdata/:id',
+
+async (req, res) => {
+
+  
+
+
+
+  try {
+
+    console.log(req.params.id , 'dsd')
+    
+    const data = await Network.find({zone:req.params.id})
+
+
+     const arr = []
+     const final = []
+
+     data.forEach(element => {
+
+      arr.push(...element.relayNetwork)
+       
+     });
+     const senor =  await Sensor.find({})
+       const sensor = senor.reverse()
+
+       console.log(arr)
+   
+     arr.forEach( async element => {
+
+      console.log(element.relayNetworkName)
+      
+      const err=   sensor.filter(sets => sets.location ===  element.relayNetworkName) 
+         const set =  err.slice(0, 1)
+         if(set[0].voltage < element.LowerVoltageThreshold  ) {
+           final.push(set[0])
+         }
+     });
+
+      res.json(final)
+
+    
+
+
+
+
+
+          
+
+
+
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+}
+)
+
+
 
 
 

@@ -98,7 +98,13 @@ return (
   >
     <CartesianGrid strokeDasharray=" 4" />
     <XAxis dataKey="reading_time" />
-    <YAxis  />
+    <YAxis 
+       
+       ticks={[8 , 12, 13,  16]}
+       domain={[8, 16]}
+
+    
+    />
     <Tooltip />
     <Legend />
     <Line type="monotone" dataKey="voltage" stroke="#8884d8" />

@@ -53,6 +53,9 @@ const [ relay , setrelay] = useState('')
       setrelay(selectedOption );
     }
 
+    const date = Date().split(" ");
+  // we use a date string to generate our filename.
+  const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
   
 
     
@@ -86,7 +89,7 @@ const [ relay , setrelay] = useState('')
         <Section>
 
       <div className="field" >
-        <label>Seelect City</label>
+        <label>Select City</label>
 <Select 
 value={city}
 onChange={handleChange}
@@ -98,7 +101,7 @@ options={data.map(t => ({ value: t.networkName, label: t.networkName})) } />
    (
  <>
     <div className="field" >
-        <label>Seelect Relay</label>
+        <label>Select Relay</label>
     <Select 
 value={relay}
 onChange={handleChange2}
