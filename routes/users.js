@@ -542,7 +542,7 @@ async (req, res) => {
 
   try {
 
-    console.log(req.params.id , 'dsd')
+    
     
     const data = await Network.find({zone:req.params.id})
 
