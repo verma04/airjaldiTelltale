@@ -35,11 +35,11 @@ const NetworkSchema = new Schema({
     
 
     UpperVoltageThreshold:{
-        type: String,
+        type: Number,
         required: true
     },
     LowerVoltageThreshold:{
-        type: String,
+        type: Number,
         required: true
     },
    

@@ -80,7 +80,7 @@ const params = useParams()
     const { data, status  , isFetching } = useQuery(["Stories" , params.id ], fetchNews ,
     {
        
-        refetchInterval: 1000,
+        refetchInterval: 500,
       }
     
     );
@@ -186,7 +186,7 @@ const params = useParams()
 
 )}
 
-<Users relayData={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} relay={params.relay} />
+<Users id={params.id} relayData={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} relay={params.relay} />
 
 
 

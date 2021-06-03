@@ -4,6 +4,9 @@ import AddUser from './AddUser'
 import { ToastContainer, toast } from 'react-toastify';
 import { useQuery } from "react-query";
 import api from '../../redux/utils/api';
+import { useForm } from "react-hook-form";
+import axios from 'axios';
+
 const fetchUsers = async (id) => {
 
     const idd = id.queryKey[1]
@@ -12,7 +15,43 @@ const fetchUsers = async (id) => {
     return res.json();
   };
 
-function Users({relay , relayData}) {
+function Users({relay , id,  relayData}) {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit
+  } = useForm({
+    criteriaMode: "all"
+  });
+  const onSubmit = async data => {
+    
+    if(data.UpperVoltageThreshold < data.LowerVoltageThreshold){
+       toast.error("UpperVoltageThreshold must be greater then  LowerVoltageThreshold", {
+
+        position: "top-right",
+       })
+    }
+    else {
+      data.network = id
+      data.location = relay
+      console.log(data)
+      
+      try {
+         const res = await  api.post('/updateThresHold', data)
+           await toast.success("Threshold Upadted")
+      }
+      catch(err){
+        console.log(err)
+      }
+
+     
+
+
+    }
+    
+
+  }
+
   const [  visible , setvisible] = useState(false);
   const toggleMenu = id => {
     setvisible(id)
@@ -55,16 +94,16 @@ const delnews = async (id) => {
       
 <div className="data" >
               
-              <form>
+              <form  form onSubmit={handleSubmit(onSubmit)}>
           <div className="input-field" >
             <div className="field" >
               <label>Battery Ampere</label>
-            <input  defaultValue={relayData[0].batteryampere} />
+            <input   type="number"  defaultValue={relayData[0].batteryampere} />
             </div>
 
             <div className="field" >
               <label>Upper Voltage Threshold</label>
-            <input defaultValue={relayData[0].UpperVoltageThreshold} />
+            <input   id={errors.UpperVoltageThreshold ? "active" : ""}  defaultValue="test" {...register("UpperVoltageThreshold", { required: true })} type="number" defaultValue={relayData[0].UpperVoltageThreshold} />
             </div>
             <div className="field" >
               <label>Standard Voltage</label>
@@ -72,11 +111,11 @@ const delnews = async (id) => {
             </div>
             <div className="field" >
               <label    >Lower Voltage Threshold</label>
-            <input defaultValue={relayData[0].LowerVoltageThreshold}/>
+            <input  id={errors.LowerVoltageThreshold ? "active" : ""}  {...register("LowerVoltageThreshold", { required: true })}  type="number" defaultValue={relayData[0].LowerVoltageThreshold}/>
             </div>
           </div>
           <div className="btn" >
-          <button>Update</button> 
+          <button type="submit"  >Update</button> 
           </div>
   
              

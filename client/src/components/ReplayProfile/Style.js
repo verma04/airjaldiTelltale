@@ -306,6 +306,9 @@ margin-bottom: 0.5rem;
 box-sizing: border-box;
 border-radius: 4px;
  }
+ #active {
+  border: 1px solid red;
+ }
  label {
    margin-bottom: 0.5rem;
  }

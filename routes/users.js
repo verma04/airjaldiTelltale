@@ -332,7 +332,7 @@ async (req, res) => {
    
    const users = await RelayUser.find({})
 
-   console.log(users)
+
    const arr = []
   
    users.forEach(element => {
@@ -483,11 +483,11 @@ async (req, res) => {
 
     const arr =[]
 
-  console.log(req.body)
+  
       const data =  await Network.find({})
 
       data.forEach(element => {
-        console.log(element.relayNetwork)
+     
           
       const err=   element.relayNetwork.filter(sets => sets.relayNetworkName === req.body.relayNetworkName) 
        
@@ -591,6 +591,50 @@ async (req, res) => {
 }
 )
 
+
+router.post('/updateThresHold',
+
+async (req, res) => {
+
+
+  try {
+
+    const set = {
+      UpperVoltageThreshold:req.body.UpperVoltageThreshold,
+      LowerVoltageThreshold:req.body.LowerVoltageThreshold
+    }
+    
+    Network.findOneAndUpdate(
+      { "networkName": req.body.network, "relayNetwork.relayNetworkName": req.body.location },
+      { 
+          "$set": {
+               "relayNetwork.$.LowerVoltageThreshold": req.body.LowerVoltageThreshold
+         ,
+         "relayNetwork.$.UpperVoltageThreshold": req.body.UpperVoltageThreshold
+            }
+      },
+      function(err,doc) {
+    
+        res.json(doc.relayNetwork)
+      }
+  );
+  
+
+
+
+
+
+          
+
+
+
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+}
+)
 
 
 
