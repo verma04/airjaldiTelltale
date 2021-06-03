@@ -558,11 +558,11 @@ async (req, res) => {
      const senor =  await Sensor.find({})
        const sensor = senor.reverse()
 
-       console.log(arr)
+  
    
      arr.forEach( async element => {
 
-      console.log(element.relayNetworkName)
+      
       
       const err=   sensor.filter(sets => sets.location ===  element.relayNetworkName) 
          const set =  err.slice(0, 1)
