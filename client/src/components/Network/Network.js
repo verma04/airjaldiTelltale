@@ -49,7 +49,7 @@ export default function Home({}) {
 <div className="content" >
 <div className="list" >
 
-{data.filter(element => element.zone === "north").map((number) => 
+{data.map((number) => 
  
  <span   >{number.networkName}</span>
 

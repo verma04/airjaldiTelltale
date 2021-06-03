@@ -93,9 +93,11 @@
     width: 100%;
     flex-wrap: wrap;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: space-evenly;
     .tower {
+      margin-top: 2rem;
+  
         width: 48%;
        
         display: flex;
@@ -123,12 +125,24 @@
         font-size: 0.9rem;
     }
 
+    li:nth-child(3){
+      padding-bottom: 0.5rem;
+      padding-top: 0.5rem;
+      color: #637381;
+
+    }
+    li:nth-child(2){
+     padding-top: 0.2rem;
+      color: #637381;
+
+    }
+
 
     }
    
    button {
        width: 50%;
-       height: 2em;;
+   padding: 0.5rem;
        background-color: white;
        border: 1px solid  ${props => props.theme.colors.blue}; 
        font-family: Montserrat-Bold;

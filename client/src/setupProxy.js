@@ -10,7 +10,7 @@ module.exports = function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: "http://telltale.airjaldi.net:5000",
+      target: API_SERVER,
       changeOrigin: true,
     })
   );

@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 
 import { useHistory } from "react-router-dom";
 
-
+import ReactSpeedometer from "react-d3-speedometer";
 
 const data = [
   {
@@ -96,15 +96,32 @@ function Dash({id}) {
 
         (
             <div className="zone-city" >
-            {data.filter(sets => sets.zone === id ).map(number =>
+            {data.map(number =>
                 <div className="tower" >
-                <ul>
-                    <li className="net_name" >{number.networkName}</li>
+     <ul>
+                    <li className="net_name" >{number.location}</li>
                     <li>Network Name</li>
+                    <li>The network needs your attention</li>
                 </ul>
-               
-                <i class="fas fa-city"></i>
-               
+   <ReactSpeedometer
+    maxValue={16}
+    value={number.voltage}
+    valueFormat={'d'}
+    customSegmentStops={[ 0 ,10 , 12 ,  14 ,  16]}
+    style={{marginTop:"1rem" ,}}
+    textColor={"red"}
+    width={200}
+    height={125}
+    segmentColors={[
+      "#bf616a",
+      "#d08770",
+      "#ebcb8b",
+      "#a3be8c",
+      "#b48ead",
+    ]}
+  />
+                     
+            
                <button onClick={() =>   history.push(`/network/${number.networkName}`) } >    View Details</button>
                 
                     
