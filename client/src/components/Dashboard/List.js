@@ -122,7 +122,7 @@ function Dash({id}) {
   />
                      
             
-               <button onClick={() =>   history.push(`/network/${number.networkName}`) } >    View Details</button>
+               <button onClick={() =>   history.push(`/network/${number.network}/${number.location}`) } >    View Details</button>
                 
                     
                 </div>

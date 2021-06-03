@@ -71,8 +71,8 @@ const delnews = async (id) => {
             <input/>
             </div>
             <div className="field" >
-              <label  defaultValue={relayData[0].LowerVoltageThreshold}  >Lower Voltage Threshold</label>
-            <input/>
+              <label    >Lower Voltage Threshold</label>
+            <input defaultValue={relayData[0].LowerVoltageThreshold}/>
             </div>
           </div>
           <div className="btn" >

@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import { Section} from './Style'
 import Loading from '../Loading/Loading'
-
+import { useHistory } from "react-router-dom";
 
 import { useQuery } from "react-query";
 
@@ -11,7 +11,7 @@ const fetchzone = async () => {
     return res.json();
   };
 export default function Home({}) {
-
+  let history = useHistory();
     const { data, status  , isFetching } = useQuery("Zone", fetchzone ,
   
     
@@ -51,7 +51,7 @@ export default function Home({}) {
 
 {data.map((number) => 
  
- <span   >{number.networkName}</span>
+ <span onClick={() =>   history.push(`/network/${number.networkName}`)}   >{number.networkName}</span>
 
 )}
 

@@ -19,7 +19,7 @@ import {
 
 import "react-datepicker/dist/react-datepicker.css";
 import { Section } from './GraphStyle'
-function Graph({data}) {
+function Graph({data , relayData}) {
 
 
   const [startDate, setStartDate] = useState(new Date().setDate( new Date().getDate()  -1));
@@ -52,7 +52,7 @@ const  result = data.filter(d => {var time = d.reading_time
      });
 
      console.log(result)
-      const final = result.map(t => ({ threshold: 13.5 , voltage: t.voltage, reading_time:t.reading_time}))
+      const final = result.map(t => ({ UpperVoltageThreshold: relayData[0].UpperVoltageThreshold , LowerVoltageThreshold: relayData[0].LowerVoltageThreshold , voltage: t.voltage, reading_time:t.reading_time}))
 
 
 return (
@@ -107,8 +107,9 @@ return (
     />
     <Tooltip />
     <Legend />
-    <Line type="monotone" dataKey="voltage" stroke="#8884d8" />
-    <Line type="monotone" dataKey="threshold" stroke="#82ca9d" />
+    <Line type="monotone" dot={false} dataKey="voltage" stroke="#8884d8" />
+    <Line type="monotone" dot={false} dataKey="LowerVoltageThreshold" stroke="red" />
+    <Line type="monotone" dot={false} dataKey="UpperVoltageThreshold" stroke="#82ca9d" />
   </LineChart>
 
 

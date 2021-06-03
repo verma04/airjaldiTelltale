@@ -179,7 +179,7 @@ const params = useParams()
   {data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay).map(number =>
 
 
-<Graph data={data.sensors.filter(sets => sets.location === number.relayNetworkName)} />
+<Graph  relayData={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} data={data.sensors.filter(sets => sets.location === number.relayNetworkName)} />
 
 
 
