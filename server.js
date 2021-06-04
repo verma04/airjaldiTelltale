@@ -135,7 +135,7 @@ mongoose
                 }
                   else {
                    
-          const sensors = await Sensor.findOne({reading_time:set[0].reading_time})
+          const sensors = await Sensor.findOne({reading_time:set[0].reading_time , location:set[0].location})
 
           if(sensors) {
             console.log("exist")
