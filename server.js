@@ -140,7 +140,7 @@ mongoose
           if(sensors) {
             console.log("exist")
           
-            console.log(sensors , "esixt")
+         
          
 
           } 
