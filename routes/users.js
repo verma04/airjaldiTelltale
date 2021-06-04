@@ -709,9 +709,15 @@ router.get(
     try {
       let user = await RelayUser.findOne({ _id: req.params.id });
 
+
+      const data = {
+           
+   
+        notifications : user.notifications.reverse()
+
+      }
       
-  res.json(user.notifications.reverse()
-    )
+  res.json(data)
       
 
      
@@ -737,8 +743,8 @@ router.get(
 
       const data = {
            
-        succces:"true",
-        list: user.relayNetwork.reverse()
+     
+        userRelay: user.relayNetwork.reverse()
 
       }
       
