@@ -81,7 +81,7 @@ mongoose
           
             if(set.length  === 0) {
 
-                console.log(element.relayNetworkName)
+                // console.log(element.relayNetworkName)
             const  noti =  await   Notifications.find({location:element.relayNetworkName})
                
           
@@ -132,7 +132,7 @@ mongoose
           if(sensors) {
             console.log("exist")
           
-         
+            console.log(sensors , "esixt")
          
 
           } 
@@ -151,7 +151,7 @@ mongoose
            }
                   
                });
-               console.log(users , sensors.location)
+              //  console.log(users , sensors.location)
 
          
   const  noti =  await   Notifications.find({location:element.relayNetworkName})
@@ -178,7 +178,7 @@ mongoose
 
 
 
-          console.log("notificationss")
+          // console.log("notificationss")
       
       
         });
@@ -215,7 +215,7 @@ else {
       
       
       
-                console.log("notificationss" , "green")
+                // console.log("notificationss" , "green")
             
             
               });
@@ -244,7 +244,7 @@ else {
    
    
    
-             console.log("notificationss" , "green")
+            //  console.log("notificationss" , "green")
          
          
            });
@@ -279,7 +279,7 @@ else {
           
           
           
-                    console.log("notificationss" , "orange")
+                    // console.log("notificationss" , "orange")
                 
                 
                   });
@@ -317,7 +317,7 @@ else {
           
           
           
-                    console.log("notificationss" , "red")
+                    // console.log("notificationss" , "red")
                 
                 
                   });
@@ -345,7 +345,7 @@ else {
       
       
       
-                console.log("notificationss" , "red")
+                // console.log("notificationss" , "red")
             
             
               });
