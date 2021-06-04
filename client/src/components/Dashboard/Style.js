@@ -97,7 +97,7 @@
     align-items: space-evenly;
     .tower {
       margin-top: 2rem;
-  
+      margin-bottom: 3rem;
         width: 48%;
        
         display: flex;
