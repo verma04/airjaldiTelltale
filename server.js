@@ -32,7 +32,12 @@ mongoose
   .then(() => 
   
   
-  MongoClient.connect("mongodb+srv://amakien_team:FuWVJj1psE1l4i8x@telltail.3wrhr.mongodb.net/").then((client) => {
+  MongoClient.connect("mongodb+srv://amakien_team:FuWVJj1psE1l4i8x@telltail.3wrhr.mongodb.net/",
+  {
+    useUnifiedTopology: true,
+     useNewUrlParser: true,
+      useCreateIndex: true
+  }).then((client) => {
     const connect = client.db("sensordata")
     console.log('sdds')
     setInterval ( async  function   () {
