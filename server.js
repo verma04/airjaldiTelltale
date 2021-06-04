@@ -78,13 +78,16 @@ mongoose
     
             const set  =  data.filter(sets => sets.location === element.relayNetworkName ) 
      
-          
+               
+            console.log(set , set.length)
+             
             if(set.length  === 0) {
 
                 // console.log(element.relayNetworkName)
             const  noti =  await   Notifications.find({location:element.relayNetworkName})
                
           
+
 
             // check if Notification length if it  is zero its becomes undefined
               
