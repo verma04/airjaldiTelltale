@@ -683,7 +683,13 @@ router.post(
         { expiresIn: '5 days' },
         (err, token) => {
           if (err) throw err;
-          res.json({ token });
+          res.json({ 
+            
+          token,
+          id: user.id,
+          name:user.name,
+          email:user.email
+        });
         }
       );
     } catch (err) {
@@ -694,5 +700,26 @@ router.post(
 );
 
 
+
+router.get(
+  '/relayUserNotification/:id',
+  async (req, res) => {
+  
+ 
+    try {
+      let user = await RelayUser.findOne({ _id: req.params.id });
+
+      
+  res.json(user.notifications.reverse()
+    )
+      
+
+     
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  }
+);
 
 module.exports = router;
