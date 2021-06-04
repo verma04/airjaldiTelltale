@@ -722,4 +722,25 @@ router.get(
   }
 );
 
+
+router.get(
+  '/relayUserRelay/:id',
+  async (req, res) => {
+  
+ 
+    try {
+      let user = await RelayUser.findOne({ _id: req.params.id });
+
+      
+  res.json(user.relayNetwork.reverse()
+    )
+      
+
+     
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  }
+);
 module.exports = router;
