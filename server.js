@@ -32,363 +32,363 @@ mongoose
   .then(() => 
   
   
- 
-  MongoClient.connect("mongodb+srv://amakien_team:FuWVJj1psE1l4i8x@telltail.3wrhr.mongodb.net/").then((client) => {
-    const connect = client.db("sensordata")
-    console.log('sdds')
-    setInterval ( async  function   () {
+ console.log("dssd")
+//   MongoClient.connect("mongodb+srv://amakien_team:FuWVJj1psE1l4i8x@telltail.3wrhr.mongodb.net/").then((client) => {
+//     const connect = client.db("sensordata")
+//     console.log('sdds')
+//     setInterval ( async  function   () {
    
-     let netw = await  Network.find({})
+//      let netw = await  Network.find({})
      
     
-     netw.forEach( async  cities => {
+//      netw.forEach( async  cities => {
 
      
        
-      let user = await Network.findOne({networkName:cities.networkName} );
+//       let user = await Network.findOne({networkName:cities.networkName} );
   
-      connect.collection('test').find().toArray(function(err, names) {
+//       connect.collection('test').find().toArray(function(err, names) {
        
   
       
 
-          if(!err) {
+//           if(!err) {
     
 
             
-            const newNames  =  names.filter(sets => sets.network === cities.networkName ) 
+//             const newNames  =  names.filter(sets => sets.network === cities.networkName ) 
            
  
     
-            const netLength = user.relayNetwork;
+//             const netLength = user.relayNetwork;
            
      
-              const data1 =  newNames.reverse()
+//               const data1 =  newNames.reverse()
               
-              // getting first two item from array of list
-         const data = data1.slice( 0 ,  netLength.length);
+//               // getting first two item from array of list
+//          const data = data1.slice( 0 ,  netLength.length);
     
 
  
         
-          netLength.forEach( async element => {
+//           netLength.forEach( async element => {
           
-            // console.log(element.relayList)
-            console.log(element.UpperVoltageThreshold  , "hjadhjk")
+//             // console.log(element.relayList)
+//             console.log(element.UpperVoltageThreshold  , "hjadhjk")
     
-            const set  =  data.filter(sets => sets.location === element.relayNetworkName ) 
+//             const set  =  data.filter(sets => sets.location === element.relayNetworkName ) 
      
-            if(set.length  === 0) {
+//             if(set.length  === 0) {
 
-                console.log(element.relayNetworkName)
-            const  noti =  await   Notifications.find({location:element.relayNetworkName})
+//                 console.log(element.relayNetworkName)
+//             const  noti =  await   Notifications.find({location:element.relayNetworkName})
                
           
 
-            // check if Notification length if it  is zero its becomes undefined
+//             // check if Notification length if it  is zero its becomes undefined
               
-            if(noti.length === 0) {
-              const data = {
-                    status:"red",
-                    network: cities.networkName,
-                    message:'Sensor is not working',
-                    location:element.relayNetworkName,
-                    reading_time: moment().format()
-                  }
+//             if(noti.length === 0) {
+//               const data = {
+//                     status:"red",
+//                     network: cities.networkName,
+//                     message:'Sensor is not working',
+//                     location:element.relayNetworkName,
+//                     reading_time: moment().format()
+//                   }
         
-                   const alert = await Notifications.create(data)
-                   console.log(alert)
-                      console.log("sensor Closd" , element.relayNetworkName)
+//                    const alert = await Notifications.create(data)
+//                    console.log(alert)
+//                       console.log("sensor Closd" , element.relayNetworkName)
                 
-            }
-             else {
-               // Checking last value to not send again message
-              const last =  noti[noti.length - 1]
+//             }
+//              else {
+//                // Checking last value to not send again message
+//               const last =  noti[noti.length - 1]
           
     
-              if(last.message === "Sensor is not working" ) {
-                console.log("message Alrady Sended" , element.relayNetworkName )
-            }
-            else {
-              const data = {
-                status:"red",
-                network: cities.networkName,
-                message:'Sensor is not working',
-                location:element.relayNetworkName,
-                reading_time: moment().format()
-              }
+//               if(last.message === "Sensor is not working" ) {
+//                 console.log("message Alrady Sended" , element.relayNetworkName )
+//             }
+//             else {
+//               const data = {
+//                 status:"red",
+//                 network: cities.networkName,
+//                 message:'Sensor is not working',
+//                 location:element.relayNetworkName,
+//                 reading_time: moment().format()
+//               }
     
-               const alert = await Notifications.create(data)
-               console.log(alert)
-                  console.log("sensor Closd" , element.relayNetworkName)
-            }       
-          }
-                }
-                  else {
+//                const alert = await Notifications.create(data)
+//                console.log(alert)
+//                   console.log("sensor Closd" , element.relayNetworkName)
+//             }       
+//           }
+//                 }
+//                   else {
 
-          const sensors = await Sensor.findOne({reading_time:set[0].reading_time})
+//           const sensors = await Sensor.findOne({reading_time:set[0].reading_time})
 
-          if(sensors) {
-            console.log("exist")
+//           if(sensors) {
+//             console.log("exist")
           
          
 
 
-          } 
-          else {
-            const sensors = await Sensor.create(set[0])
-               console.log(sensors)
+//           } 
+//           else {
+//             const sensors = await Sensor.create(set[0])
+//                console.log(sensors)
 
-               const data = await RelayUser.find({})
-               const users = []
+//                const data = await RelayUser.find({})
+//                const users = []
                
-               data.forEach(element =>{
-                  const set  =  element.relayNetwork.filter(sets => sets.relayName === sensors.location) 
-                console.log(set.length)
-                if(set.length === 1 ){
-            users.push(element._id)
-           }
+//                data.forEach(element =>{
+//                   const set  =  element.relayNetwork.filter(sets => sets.relayName === sensors.location) 
+//                 console.log(set.length)
+//                 if(set.length === 1 ){
+//             users.push(element._id)
+//            }
                   
-               });
-               console.log(users , sensors.location)
+//                });
+//                console.log(users , sensors.location)
 
          
-  const  noti =  await   Notifications.find({location:element.relayNetworkName})
+//   const  noti =  await   Notifications.find({location:element.relayNetworkName})
  
-  console.log(noti)
- const last =  noti[noti.length - 1]
+//   console.log(noti)
+//  const last =  noti[noti.length - 1]
 
- if(noti.length === 0) {
-  const data = {
-    status:"green",
-    ...set[0],
+//  if(noti.length === 0) {
+//   const data = {
+//     status:"green",
+//     ...set[0],
 
-    message:'Sensor is working Now'
-  }
+//     message:'Sensor is working Now'
+//   }
 
-       const alert = await Notifications.create(data)
+//        const alert = await Notifications.create(data)
    
     
-       console.log(alert , data)
+//        console.log(alert , data)
  
-       users.forEach(element => {
+//        users.forEach(element => {
 
-        RelayUser.findOneAndUpdate({  _id: element  },{  $push: { "notifications": data  }  },  { new: true, upsert: true },function(err, doc) {
+//         RelayUser.findOneAndUpdate({  _id: element  },{  $push: { "notifications": data  }  },  { new: true, upsert: true },function(err, doc) {
 
 
 
-          console.log("notificationss")
+//           console.log("notificationss")
       
       
-        });
+//         });
       
          
-       });
+//        });
 
     
-}
+// }
                
-else {
- if (sensors.voltage > element.UpperVoltageThreshold  && sensors.voltage < element.UpperVoltageThreshold  + 2) {
+// else {
+//  if (sensors.voltage > element.UpperVoltageThreshold  && sensors.voltage < element.UpperVoltageThreshold  + 2) {
 
 
  
 
  
-    if(last.status === "red"   ) {
+//     if(last.status === "red"   ) {
 
-         const data = {
-            status:"green",
-            ...set[0],
-            _id:sensors._id,
-            message:'Sensor is working Now'
-          }
+//          const data = {
+//             status:"green",
+//             ...set[0],
+//             _id:sensors._id,
+//             message:'Sensor is working Now'
+//           }
 
-           const alert = await Notifications.create(data)
+//            const alert = await Notifications.create(data)
 
-             console.log(alert)
+//              console.log(alert)
 
-             users.forEach(element => {
+//              users.forEach(element => {
 
-              RelayUser.findOneAndUpdate({  _id: element  },{  $push: { "notifications": data  }  },  { new: true, upsert: true },function(err, doc) {
+//               RelayUser.findOneAndUpdate({  _id: element  },{  $push: { "notifications": data  }  },  { new: true, upsert: true },function(err, doc) {
       
       
       
-                console.log("notificationss" , "green")
+//                 console.log("notificationss" , "green")
             
             
-              });
+//               });
             
                
-             });
+//              });
 
-    }
+//     }
 
-     else if( last.status === "orange" ) {
+//      else if( last.status === "orange" ) {
 
-      const data = {
-         status:"green",
-         ...set[0],
-         _id:sensors._id,
-         message:'Sensor is working Now'
-       }
+//       const data = {
+//          status:"green",
+//          ...set[0],
+//          _id:sensors._id,
+//          message:'Sensor is working Now'
+//        }
 
-        const alert = await Notifications.create(data)
+//         const alert = await Notifications.create(data)
 
-          console.log(alert)
+//           console.log(alert)
 
-          users.forEach(element => {
+//           users.forEach(element => {
 
-           RelayUser.findOneAndUpdate({  _id: element  },{  $push: { "notifications": data  }  },  { new: true, upsert: true },function(err, doc) {
+//            RelayUser.findOneAndUpdate({  _id: element  },{  $push: { "notifications": data  }  },  { new: true, upsert: true },function(err, doc) {
    
    
    
-             console.log("notificationss" , "green")
+//              console.log("notificationss" , "green")
          
          
-           });
+//            });
          
             
-          });
+//           });
 
- }
-    else {  
-  console.log("good" , sensors , sensors.network)
-    }
+//  }
+//     else {  
+//   console.log("good" , sensors , sensors.network)
+//     }
       
-        } 
-         else if (sensors.voltage > element.LowerVoltageThreshold  && sensors.voltage < element.UpperVoltageThreshold ) {
+//         } 
+//          else if (sensors.voltage > element.LowerVoltageThreshold  && sensors.voltage < element.UpperVoltageThreshold ) {
            
-          if(last.status  === "green" ) {
+//           if(last.status  === "green" ) {
 
-            const data = {
-              status:"orange",
-               ...set[0],
-               _id:sensors._id,
-               message:'Sensor stared Discharing'
-             }
+//             const data = {
+//               status:"orange",
+//                ...set[0],
+//                _id:sensors._id,
+//                message:'Sensor stared Discharing'
+//              }
    
-              const alert = await Notifications.create(data)
+//               const alert = await Notifications.create(data)
    
-                console.log(alert)
+//                 console.log(alert)
 
-                users.forEach(element => {
+//                 users.forEach(element => {
 
-                  RelayUser.findOneAndUpdate({  _id: element  },{  $push: { "notifications": data  }  },  { new: true, upsert: true },function(err, doc) {
+//                   RelayUser.findOneAndUpdate({  _id: element  },{  $push: { "notifications": data  }  },  { new: true, upsert: true },function(err, doc) {
           
           
           
-                    console.log("notificationss" , "orange")
+//                     console.log("notificationss" , "orange")
                 
                 
-                  });
+//                   });
                 
                    
-                 });
+//                  });
    
-       }
-       else if (last.status  === "orange") {
-        console.log("oragane Alrt Aldeady Sended")
-        }
+//        }
+//        else if (last.status  === "orange") {
+//         console.log("oragane Alrt Aldeady Sended")
+//         }
       
-       else {
-         console.log("oragane Alrt Aldeady Sended")
-       }
+//        else {
+//          console.log("oragane Alrt Aldeady Sended")
+//        }
          
-        }
-        else if (sensors.voltage > 0 && sensors.voltage <  element.LowerVoltageThreshold ) {
-          if(last.status  === "green" ) {
+//         }
+//         else if (sensors.voltage > 0 && sensors.voltage <  element.LowerVoltageThreshold ) {
+//           if(last.status  === "green" ) {
 
-            const data = {
-              status:"red",
-               ...set[0],
-               _id:sensors._id,
-               message:'Sensor is dicharged'
-             }
+//             const data = {
+//               status:"red",
+//                ...set[0],
+//                _id:sensors._id,
+//                message:'Sensor is dicharged'
+//              }
    
-              const alert = await Notifications.create(data)
+//               const alert = await Notifications.create(data)
    
-                console.log(alert)
+//                 console.log(alert)
 
-                users.forEach(element => {
+//                 users.forEach(element => {
 
-                  RelayUser.findOneAndUpdate({  _id: element  },{  $push: { "notifications": data  }  },  { new: true, upsert: true },function(err, doc) {
+//                   RelayUser.findOneAndUpdate({  _id: element  },{  $push: { "notifications": data  }  },  { new: true, upsert: true },function(err, doc) {
           
           
           
-                    console.log("notificationss" , "red")
+//                     console.log("notificationss" , "red")
                 
                 
-                  });
+//                   });
                 
                    
-                 });
+//                  });
    
-       }
-     else  if(last.status  === "orange" ) {
+//        }
+//      else  if(last.status  === "orange" ) {
 
-        const data = {
-          status:"red",
-           ...set[0],
-           _id:sensors._id,
-           message:'Sensor is dicharged'
-         }
+//         const data = {
+//           status:"red",
+//            ...set[0],
+//            _id:sensors._id,
+//            message:'Sensor is dicharged'
+//          }
 
-          const alert = await Notifications.create(data)
+//           const alert = await Notifications.create(data)
 
-            console.log(alert)
+//             console.log(alert)
 
-            users.forEach(element => {
+//             users.forEach(element => {
 
-              RelayUser.findOneAndUpdate({  _id: element  },{  $push: { "notifications": data  }  },  { new: true, upsert: true },function(err, doc) {
+//               RelayUser.findOneAndUpdate({  _id: element  },{  $push: { "notifications": data  }  },  { new: true, upsert: true },function(err, doc) {
       
       
       
-                console.log("notificationss" , "red")
+//                 console.log("notificationss" , "red")
             
             
-              });
+//               });
             
                
-             });
+//              });
 
-   }
+//    }
    
-   else {
-    console.log("Red Alert Aldeady Sended")
-  }
+//    else {
+//     console.log("Red Alert Aldeady Sended")
+//   }
           
           
-}
-        }
+// }
+//         }
 
-          }
+//           }
        
-                  }
+//                   }
             
-          });
+//           });
     
     
        
            
             
-          }
-      });
+//           }
+//       });
 
 
-     });
+//      });
 
 
 
   
     
-  }, 5000);
+//   }, 5000);
 
-}).catch((err) => {
+// }).catch((err) => {
   
-    // Printing the error message
-    console.log(err.Message);
-  })
+//     // Printing the error message
+//     console.log(err.Message);
+//   })
   
     
 
