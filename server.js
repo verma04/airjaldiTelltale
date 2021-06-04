@@ -36,7 +36,7 @@ mongoose
   {
     useUnifiedTopology: true,
      useNewUrlParser: true,
-      useCreateIndex: true
+  
   }).then((client) => {
     const connect = client.db("sensordata")
     console.log('sdds')
