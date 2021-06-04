@@ -67,7 +67,8 @@ mongoose
               // getting first two item from array of list
          const data = data1.slice( 0 ,  netLength.length);
     
-
+   
+ 
  
         
           netLength.forEach( async element => {
@@ -77,6 +78,7 @@ mongoose
     
             const set  =  data.filter(sets => sets.location === element.relayNetworkName ) 
      
+          
             if(set.length  === 0) {
 
                 console.log(element.relayNetworkName)
@@ -124,19 +126,19 @@ mongoose
           }
                 }
                   else {
-
+                   
           const sensors = await Sensor.findOne({reading_time:set[0].reading_time})
 
           if(sensors) {
             console.log("exist")
           
          
-
+         
 
           } 
           else {
             const sensors = await Sensor.create(set[0])
-               console.log(sensors)
+               console.log(sensors , "sdds")
 
                const data = await RelayUser.find({})
                const users = []
