@@ -733,9 +733,16 @@ router.get(
       const sensor = senor.reverse()
 
       let user = await RelayUser.findOne({ _id: req.params.id });
+  
 
+      const data = {
+           
+        succces:"true",
+        list: user.relayNetwork.reverse()
+
+      }
       
-  res.json(user.relayNetwork.reverse())
+  res.json(data)
     
 
       
