@@ -731,7 +731,7 @@ router.get(
     try {
       const senor =  await Sensor.find({})
       const sensor = senor.reverse()
-  console.log(sensor)
+
       let user = await RelayUser.findOne({ _id: req.params.id });
 
       
