@@ -684,7 +684,6 @@ router.post(
         (err, token) => {
           if (err) throw err;
           res.json({ 
-            
           token,
           id: user.id,
           name:user.name,
