@@ -2,7 +2,7 @@ import React from 'react'
 import { Section } from './Style'
 
 import { logoutUser } from '../../redux/actions/authActions';
-
+import { Link } from "react-router-dom";
 import { connect } from 'react-redux'
 import { useLocation } from "react-router-dom";
 
@@ -26,54 +26,54 @@ function Sidebar({logoutUser , auth:{isAuthenticated , user}}) {
                 </div>  
                 <div   id={splitLocation[1] === "" ? "active" : ""}  className="icon" >
                 <i className="fas fa-signal"></i>
-             <a  href="/"  >Dashboard
+             <Link  to="/"  >Dashboard
 
-</a>
+</Link>
              </div>
 
                 <div   id={splitLocation[1] === "network" ? "active" : ""}   className="icon" >
                 <i className="fas fa-network-wired"></i>
-             <a  href="/network"  >network
+             <Link  to="/network"  >network
 
-</a>
+</Link>
              </div>
 
              <div  id={splitLocation[1] === "users" ? "active" : ""}     className="icon" >
              <i className="fas fa-users"></i>
    
-             <a  href="/users"  >Users
+             <Link  to="/users"  >Users
 
-</a>
+</Link>
              </div>
             
 
              <div  id={splitLocation[1] === "reports" ? "active" : ""}     className="icon" >
                 <i className="fas fa-chart-line"></i>
-            <a  href="/reports"  >
+            <Link  to="/reports"  >
 Reports
-</a>
+</Link>
              </div>
 
 
              <div    className="icon" >
                 <i className="fas fa-file-archive"></i>
-             <a  href="/"  >Log
+             <Link  to="/"  >Log
 
-</a>
+</Link>
              </div>
 
              <div    className="icon" >
                 <i className="fas fa-cog"></i>
-             <a  href="/"  >Settings
+             <Link  to="/"  >Settings
 
-</a>
+</Link>
              </div>
 
              <div    className="icon" >
                 <i className="fas fa-sign-out-alt"></i>
-             <a  onClick={() => logoutUser() } >Logout
+             <Link  onClick={() => logoutUser() } >Logout
 
-</a>
+</Link>
              </div>
 
      
