@@ -711,7 +711,7 @@ router.get(
 
       const final = user.notifications.reverse().map(t => ({
         _id: t._id,
-            status: t.sensorstatus,
+            status: t.status,
             network: t.network,
             location: t.location,
             sensor: t.sensor,
