@@ -810,21 +810,9 @@ async (req, res) => {
       let user = await RelayUser.findOne({ _id: req.params.id });
   
 
-      var array = [{id :1, name :"test1"},{id :2, name :"test2"},{id :3, name :"test3"},{id :4, name :"test4"}];
 
-var anotherOne = user.relayNetwork
-
-var filteredArray  = final.filter(function(array_el){
-   return anotherOne.filter(function(anotherOne_el){
-      return anotherOne_el.relayName !== array_el.relayName;
-   }).length == 0
-});
-
- 
-
-
-res.json(filteredArray)
-
+  const ress = final.filter(f => user.relayNetwork.some(item => item.relayName   === f.location));
+  res.json(ress);
 
 
 
