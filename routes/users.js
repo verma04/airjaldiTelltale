@@ -760,4 +760,79 @@ router.get(
     }
   }
 );
+
+
+
+
+router.get('/getdataRelay/:id',
+
+async (req, res) => {
+
+  
+
+
+
+  try {
+
+    
+    
+    const data = await Network.find({})
+
+
+     const arr = []
+     const final = []
+
+     data.forEach(element => {
+
+      arr.push(...element.relayNetwork)
+       
+     });
+     const senor =  await Sensor.find({})
+       const sensor = senor.reverse()
+
+  
+   
+     arr.forEach( async element => {
+
+      
+      
+      const err=   sensor.filter(sets => sets.location ===  element.relayNetworkName) 
+         const set =  err.slice(0, 1)
+         console.log(set)
+         if(set[0].voltage < element.LowerVoltageThreshold  ) {
+           final.push(set[0])
+         }
+     });
+
+
+    
+
+      let user = await RelayUser.findOne({ _id: req.params.id });
+  
+
+      var array = [{id :1, name :"test1"},{id :2, name :"test2"},{id :3, name :"test3"},{id :4, name :"test4"}];
+
+var anotherOne = user.relayNetwork
+
+var filteredArray  = final.filter(function(array_el){
+   return anotherOne.filter(function(anotherOne_el){
+      return anotherOne_el.id == array_el.id;
+   }).length == 0
+});
+
+res.json(filteredArray)
+
+
+
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+}
+)
+
+
+
+
 module.exports = router;
