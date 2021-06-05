@@ -709,14 +709,25 @@ router.get(
     try {
       let user = await RelayUser.findOne({ _id: req.params.id });
 
-
+      const final = user.notifications.reverse().map(t => ({
+        _id: t._id,
+            status: t.sensorstatus,
+            network: t.network,
+            location: t.location,
+            sensor: t.sensor,
+            batteryvolt: t.batteryvolt,
+            batterytype: t.batterytype,
+            reading_time: moment(t.reading_time).format("dddd, MMMM Do YYYY, h:mm:ss a"),
+            batteryampere: t.batteryampere,
+            message: t.batteryampere
+      }))
       const data = {
            
    
-        notifications : user.notifications.reverse()
+        notifications : final
 
       }
-      
+    
   res.json(data)
       
 

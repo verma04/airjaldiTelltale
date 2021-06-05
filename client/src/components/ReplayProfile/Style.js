@@ -483,6 +483,20 @@ height: 30%;
   }
 
       }
+      .json {
+        width: 100%;
+        height: 20rem;
+   
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   .code {
+    width: 100%;
+        height: 15rem;
+   }
+        
+
+      }
 
       .modal {
  /* Hidden by default */
