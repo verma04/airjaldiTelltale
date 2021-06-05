@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Json({ relay,  data}) {
+function Json({ relay, id , data}) {
  
   
     console.log(data , 'asas')
@@ -11,10 +11,10 @@ function Json({ relay,  data}) {
     
             <code className="code" ng-non-bindable>
             &#123;
-            "location": "abc",<br></br>
+            "location": {id},<br></br>
 
 "network": "xyz",<br></br>
-"battery_voltage": {data[0].voltage}, <br></br>
+"battery_voltage": {data[0].relayNetworkName}, <br></br>
 "email": "email@example.com", <br></br>
 
 "phone": "0000000000" <br></br>

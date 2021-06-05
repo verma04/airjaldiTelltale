@@ -192,7 +192,7 @@ const params = useParams()
 
 
 
-<Json  sensor={data.sensors} data ={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} />
+<Json  id={params.id} sensor={data.sensors} data ={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} />
   </Section >
 
         

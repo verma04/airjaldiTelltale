@@ -592,6 +592,56 @@ async (req, res) => {
 )
 
 
+router.get('/DashboardDet',
+
+async (req, res) => {
+
+  
+
+
+
+  try {
+
+   
+    
+    const data = await Network.find({})
+
+
+     const arr = []
+    
+
+     data.forEach(element => {
+
+      arr.push(...element.relayNetwork)
+       
+     });
+     
+
+    const users =  await RelayUser.find({})
+
+    
+
+
+const datas = {
+  network: data.length,
+  users:users.length,
+relay:arr.length
+}
+res.json(datas)
+
+          
+
+
+
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+}
+)
+
+
 router.post('/updateThresHold',
 
 async (req, res) => {

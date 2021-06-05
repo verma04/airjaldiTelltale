@@ -9,16 +9,24 @@ export const Section = styled.nav`
      display: flex;
      justify-content: center;
      align-items: center;
+     
 
      .flex {
         width: 100%;
-        height: 100vh;
-        min-height: 50rem;;
- 
+        height: 110vh;
+        min-height: 55rem;
+        
         display: flex;
      justify-content: center;
      align-items: center;
-     position: relative;
+   
+         background-image: url("https://res.cloudinary.com/airjaldi/image/upload/v1622885314/210518_AirJaldi_Telltale_rskh1p.png"); 
+  background-color: #cccccc; 
+
+  background-position: center; 
+  
+  background-size: cover; 
+      
      .flex-1 {
          width: 35%;
   
@@ -27,19 +35,13 @@ export const Section = styled.nav`
      .flex-2 {
          width:65%;
   
-         height:100%;
-         background-image: url("https://res.cloudinary.com/airjaldi/image/upload/v1621917968/banner_image_1_axhnq5.png"); 
-  background-color: #cccccc; 
-
-  background-position: center; 
-  background-repeat: no-repeat; 
-  background-size: cover; 
+       
      }
      .login-box {
          position: absolute;
          width: 40%;
          height: 60%;
-         
+          
          left: 10%;
          display: flex;
          justify-content: space-between;

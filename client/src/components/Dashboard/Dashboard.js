@@ -5,13 +5,16 @@ import { useQuery } from "react-query";
 import moment  from "moment"
 const fetchNotifications = async (id) => {
 
-   
-   
+
     const res = await fetch(`/api/getNotifications`);
     return res.json();
   };
+  const fetchDashboardDet = async (id) => {
+    const res = await fetch(`/api/DashboardDet`);
+    return res.json();
+  };
 function Network() {
-
+    const { data:data1, status:status1  } = useQuery("DashboardDet" , fetchDashboardDet )
     const { data, status  , isFetching } = useQuery("Notifications" , fetchNotifications ,
     {
        
@@ -83,7 +86,19 @@ function Network() {
   )}
  </div>
 
+ {status === "error" && <p>Error fetching data</p>}
+        {status === "loading" && 
+        <div className="alert" >
+            <div className="img" >
 
+<img src="https://res.cloudinary.com/dzcmadjl1/image/upload/v1615785167/cm5bk5luzcwquerawyfc.gif" ></img>
+      </div>
+            </div>
+        
+     
+        
+        }
+        {status === "success" && (
  <div className="network" >
  
  
@@ -93,8 +108,8 @@ function Network() {
  <i class="fas fa-broadcast-tower"></i>
 
  <ul>
-     <li>40</li>
-     <li>Users</li>
+     <li>4</li>
+     <li>Zone</li>
  </ul>
      
  </div>
@@ -105,8 +120,32 @@ function Network() {
 <i class="fas fa-broadcast-tower"></i>
 
 <ul>
-    <li>2</li>
+    <li>{data1.network}</li>
     <li>Networks</li>
+</ul>
+    
+</div>
+
+<div className="tower" >
+
+
+<i class="fas fa-broadcast-tower"></i>
+
+<ul>
+    <li>{data1.relay}</li>
+    <li>Relays</li>
+</ul>
+    
+</div>
+
+<div className="tower" >
+
+
+<i class="fas fa-broadcast-tower"></i>
+
+<ul>
+    <li>{data1.users}</li>
+    <li>Users</li>
 </ul>
     
 </div>
@@ -116,11 +155,10 @@ function Network() {
 
 
 
-
  </div>
 
 
-
+        )}
   </div>
         </div>
         </Section>
