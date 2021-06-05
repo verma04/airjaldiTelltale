@@ -1,24 +1,28 @@
 import React from 'react'
 
-function Json({ relay, id , data}) {
+function Json({ relay, id , data , sens}) {
  
+
+   
+     const set =  sens.filter(sets => sets.location === relay) 
   
-    console.log(data , 'asas')
 
     return (
-        <div className="josn" >
+        <div className="json" >
          
-    
+    <div className="head" >
+     <h1> Get /</h1>  
+    </div>
             <code className="code" ng-non-bindable>
-            &#123;
+            &#123; <br></br>
             "location": {id},<br></br>
 
-"network": "xyz",<br></br>
-"battery_voltage": {data[0].relayNetworkName}, <br></br>
+"network": {data[0].relayNetworkName},<br></br>
+"battery_voltage": {set[0].voltage} , <br></br>
 "email": "email@example.com", <br></br>
 
 "phone": "0000000000" <br></br>
-"network":
+
             &#125;
             </code>  
 

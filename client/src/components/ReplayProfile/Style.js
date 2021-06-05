@@ -490,9 +490,22 @@ height: 30%;
    display: flex;
    justify-content: center;
    flex-direction: column;
-   .code {
-    width: 100%;
+   align-items: center;
+   margin-bottom: 2rem;
+   .head {
+    display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: left;
+   width: 90%;
+   font-weight: 1000;
+   }
+   code {
+    width: 90%;
         height: 15rem;
+        line-height: 1.6;
+         word-spacing:0.5;
+         font-size: 1.5rem;;
    }
         
 
