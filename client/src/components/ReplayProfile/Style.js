@@ -5,7 +5,7 @@
 
 
 
-  export const Section = styled.nav`
+  export const Section = styled.section`
   display:flex;
   justify-content:center;
   align-items:center;

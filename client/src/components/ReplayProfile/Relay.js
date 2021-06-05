@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import Notifications from './Notifications'
 import moment from 'moment'
 import Users from './Users'
+
 import {
   LineChart,
   CartesianGrid,
@@ -19,6 +20,7 @@ import {
   Area,
   Bar
 } from "recharts";
+import Json from  './Json' 
 import Loading from '../Loading/Loading';
 import Graph from './Graph';
 
@@ -190,7 +192,7 @@ const params = useParams()
 
 
 
-
+<Json data ={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} />
   </Section >
 
         
