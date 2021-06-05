@@ -31,7 +31,7 @@ mongoose
   )
   .then(() => 
   
-  
+ 
   MongoClient.connect("mongodb+srv://amakien_team:FuWVJj1psE1l4i8x@telltail.3wrhr.mongodb.net/",
   {
     useUnifiedTopology: true,
@@ -51,7 +51,7 @@ mongoose
        
       let user = await Network.findOne({networkName:cities.networkName} );
   
-      connect.collection('test').find().toArray(function(err, names) {
+      connect.collection('test').find().sort({reading_time:-1}).limit(200).toArray(function(err, names) {
        
   
       
@@ -67,7 +67,7 @@ mongoose
             const netLength = user.relayNetwork;
            
      
-              const data1 =  newNames.reverse()
+              const data1 =  newNames
               
               // getting first two item from array of list
          const data = data1.slice( 0 ,  netLength.length);

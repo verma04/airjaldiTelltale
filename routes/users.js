@@ -774,6 +774,9 @@ async (req, res) => {
 
   try {
 
+ 
+     
+
     
     
     const data = await Network.find({})
@@ -787,8 +790,9 @@ async (req, res) => {
       arr.push(...element.relayNetwork)
        
      });
-     const senor =  await Sensor.find({})
-       const sensor = senor.reverse()
+     const senor =  await Sensor.find().sort({reading_time:-1}).limit(100)
+       const sensor = senor
+       
 
   
    
