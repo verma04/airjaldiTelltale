@@ -13,14 +13,14 @@ export const Section = styled.nav`
 
      .flex {
         width: 100%;
-        height: 110vh;
+        height: 100vh;
         min-height: 55rem;
         
         display: flex;
      justify-content: center;
      align-items: center;
    
-         background-image: url("https://res.cloudinary.com/airjaldi/image/upload/v1622885314/210518_AirJaldi_Telltale_rskh1p.png"); 
+         background-image: url("https://res.cloudinary.com/airjaldi/image/upload/v1622887307/telltale-banner_rvgw6a.png"); 
   background-color: #cccccc; 
 
   background-position: center; 
@@ -50,6 +50,9 @@ export const Section = styled.nav`
          .logo {
              width: 100%;
              height: 20%;
+             img {
+                 height: 100%;
+             }
 
          }
          .login-form {

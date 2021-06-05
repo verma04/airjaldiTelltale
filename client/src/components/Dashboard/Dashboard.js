@@ -86,19 +86,19 @@ function Network() {
   )}
  </div>
 
- {status === "error" && <p>Error fetching data</p>}
-        {status === "loading" && 
+ {status1 === "error" && <p>Error fetching data</p>}
+        {status1 === "loading" && 
         <div className="alert" >
             <div className="img" >
 
-<img src="https://res.cloudinary.com/dzcmadjl1/image/upload/v1615785167/cm5bk5luzcwquerawyfc.gif" ></img>
+
       </div>
             </div>
         
      
         
         }
-        {status === "success" && (
+        {status1 === "success" && (
  <div className="network" >
  
  
