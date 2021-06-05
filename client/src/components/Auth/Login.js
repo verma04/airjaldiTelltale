@@ -32,9 +32,7 @@ function Login({loginUser , auth:{isAuthenticated}}) {
                 
 
                 <div className="login-box" >
-                    <div className="logo" >
-                        <img src={'https://res.cloudinary.com/airjaldi/image/upload/v1621922035/logo_1_nzz4cs.png'} ></img>
-                    </div>
+                  
                     <div className="login-form" >
   <div className="head" >
       <h2>Login</h2>
