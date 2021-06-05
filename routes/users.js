@@ -816,9 +816,12 @@ var anotherOne = user.relayNetwork
 
 var filteredArray  = final.filter(function(array_el){
    return anotherOne.filter(function(anotherOne_el){
-      return anotherOne_el.id == array_el.id;
+      return anotherOne_el.relayName == array_el.relayName;
    }).length == 0
 });
+
+ 
+
 
 res.json(filteredArray)
 
