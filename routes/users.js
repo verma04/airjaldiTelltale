@@ -820,7 +820,7 @@ async (req, res) => {
 
   const datas = {
 
-    alrt :ress
+    alert :ress
 
   }
   res.json(datas)
