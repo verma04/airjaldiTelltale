@@ -55,7 +55,7 @@ export default function Home({}) {
                 
 <div className="content" >
 <div className="list" >
-{data.filter(element => element.zone === "south").map((number) => 
+{data.filter(element => element.zone === "north").map((number) => 
  
  
  <span onClick={() =>   history.push(`/network/${number.networkName}`)}   >{number.networkName}</span>
