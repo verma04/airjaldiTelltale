@@ -173,7 +173,7 @@ mongoose
     status:"green",
     ...set[0],
 
-    message:'Sensor is working Now'
+    message:'Sensor is Connected'
   }
 
        const alert = await Notifications.create(data)

@@ -1,9 +1,9 @@
 import Head from 'next/head';
-
+import React  , {useState} from 'react'
 import { Section} from './Style'
 import Loading from '../Loading/Loading'
 import { useHistory } from "react-router-dom";
-
+import AddNetwork from './AddNetwork'
 import { useQuery } from "react-query";
 
 const fetchzone = async () => {
@@ -11,6 +11,7 @@ const fetchzone = async () => {
     return res.json();
   };
 export default function Home({}) {
+  const [add , setAdd ] = useState(false)
   let history = useHistory();
     const { data, status  , isFetching } = useQuery("Zone", fetchzone ,
   
@@ -33,6 +34,12 @@ export default function Home({}) {
       <Section>
     
     <div class="grid"   >
+
+    <div onClick={() => setAdd(true) } className="add-users" >
+        <span>Add Relay</span>
+        <i className="fas fa-plus-circle"></i>
+    </div>
+
 
         <div className="head" >
      <div className="head-1" >
@@ -82,7 +89,7 @@ export default function Home({}) {
 
 {data.filter(element => element.zone === "south").map((number) => 
 
-<span   >{number.networkName}</span>
+<span    onClick={() =>   history.push(`/network/${number.networkName}`)}  >{number.networkName}</span>
 
 )}
 
@@ -116,7 +123,7 @@ export default function Home({}) {
 
 {data.filter(element => element.zone === "east").map((number) => 
  
- <span >{number.networkName}</span>
+ <span  onClick={() =>   history.push(`/network/${number.networkName}`)}  >{number.networkName}</span>
 
 )}
 
@@ -150,7 +157,7 @@ export default function Home({}) {
 
 {data.filter(element => element.networkName === "west").map((number) => 
 
-<span   >{number.networkName}</span>
+<span   onClick={() =>   history.push(`/network/${number.networkName}`)}   >{number.networkName}</span>
 
 )}
 
@@ -206,7 +213,13 @@ export default function Home({}) {
  
       )}
   
-       
+  {add === true ?  
+
+(  <AddNetwork  setAdd={setAdd} />)
+: (
+ null
+)
+}
   
     </>
   );

@@ -297,19 +297,24 @@ async (req, res) => {
 
 
   try {
+   
+  
+  
+     const net = await Network.findOne({networkName:req.body.networkName})
+   
+     
+     if(net) {
+      return res
+        .status(400)
+        .json({ errors: { msg: `${req.body.networkName} All Ready Exist` } });
+      }
+     else {
+      const network = await Network.create(req.body)
+   res.json(network)
+     }
 
 
-    Network.findOneAndUpdate({  networkName: "Kangra"  },{  $push: { "relayNetwork": req.body  }  },  { new: true, upsert: true },function(err, doc) {
-
-
-
-
-
-
-          });
-
-
-
+    
 
   } catch (err) {
     console.error(err.message);
