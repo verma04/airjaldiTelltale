@@ -153,7 +153,7 @@ const delnews = async (id) => {
            <>
            {data.map(number => 
             <ul>
-<li> <img src="https://res.cloudinary.com/airjaldi/image/upload/v1622477804/Ellipse_55_ct8ez0.png" ></img> <span>{number.name}</span></li>
+<li> <img src={number.avatar} ></img> <span>{number.name}</span></li>
 
 <li>Active</li>
 

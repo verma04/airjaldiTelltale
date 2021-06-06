@@ -43,13 +43,13 @@ function AddUser({setAdd , relays}) {
     const onSubmit = data =>  {
     
       if(img === "https://res.cloudinary.com/airjaldi/image/upload/v1622518068/avataaars-2_cg07t0.png")
- {
+          {
 toast.error("Upload Image")
  }
- if ( img==="https://res.cloudinary.com/dzcmadjl1/image/upload/v1610515663/HimTrek/nkvy6wlmekzb80khdi2f.gif" ) (
+ else if ( img==="https://res.cloudinary.com/dzcmadjl1/image/upload/v1610515663/HimTrek/nkvy6wlmekzb80khdi2f.gif" ) (
   toast.error("Image Uploading")
  )
- if ( relay ==="" ) {
+   else  if ( relay ==="" ) {
   toast.error("Enter Network Relay")
  }  
  else {
@@ -122,11 +122,11 @@ toast.error("Upload Image")
     return (
         <Section>
           <ToastContainer/>
-        <div id="myModal" class="modal">
+        <div id="myModal-1" class="modal-1">
       
-<div class="modal-content">
+<div class="modal-content-1">
   
-<div className="login-box" >
+<div className="login-box-1" >
 
 
                     <div className="login-form" >
