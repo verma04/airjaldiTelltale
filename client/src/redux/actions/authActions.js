@@ -50,6 +50,33 @@ export const loginUser = userData => dispatch => {
 };
 
 
+export const UserloginUser = userData => dispatch => {
+  
+  axios.post("http://telltale.airjaldi.net:5000/api/login", userData)
+  .then(res => {
+    // Save to localStorage
+
+    // Set token to localStorage
+ 
+    const { token } = res.data;
+    localStorage.setItem("jwtToken", token);
+
+    setAuthToken(token);
+
+    const decoded = jwt_decode(token);
+
+    dispatch(setCurrentUser(decoded));
+  })
+  .catch(err => {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => toast.error(error.msg));
+    }
+  }
+  );
+};
+
 
 // Set logged in user
 export const setCurrentUser = decoded => {

@@ -14,7 +14,7 @@ const Network = require("../models/Network");
 const Notifications = require("../models/Notifications");
 const Sensor = require("../models/Sensor");
 const RelayUser = require("../models/RelayUser");
-
+const auth = require('../middleware/auth');
 
   router.post(
     '/login',
@@ -148,10 +148,10 @@ const RelayUser = require("../models/RelayUser");
 
 
 
-     const sensors = await    Sensor.find({network: req.params.id})
+     const sensors = await    Sensor.find({network: req.params.id}).sort({reading_time:-1}).limit(200)
 
      const set = {
-       sensors : sensors.reverse(),
+       sensors : sensors,
        data:data
      }
      res.json(set)
@@ -566,9 +566,15 @@ async (req, res) => {
       
       const err=   sensor.filter(sets => sets.location ===  element.relayNetworkName) 
          const set =  err.slice(0, 1)
+         if(set.length === 0){
+
+          console.log( element.relayNetworkName , "sddsd")
+           
+         }else {
          if(set[0].voltage < element.LowerVoltageThreshold  ) {
            final.push(set[0])
          }
+        }
      });
 
       res.json(final)
@@ -685,6 +691,197 @@ async (req, res) => {
   }
 }
 )
+
+router.get(
+  '/relayUserNotification',
+  auth, 
+  async (req, res) => {
+    
+    console.log(req.user.id)
+  
+    try {
+      let user = await RelayUser.findOne({ _id: req.user.id });
+     
+    
+
+     
+    
+  res.json(user.notifications)
+      
+
+     
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  }
+);
+
+router.get('/getdataRelay',
+
+auth ,
+
+async (req, res) => {
+
+  
+
+
+
+  try {
+
+ 
+     
+
+    
+    
+    const data = await Network.find({})
+
+
+     const arr = []
+     const final = []
+
+     data.forEach(element => {
+
+      arr.push(...element.relayNetwork)
+       
+     });
+     const senor =  await Sensor.find().sort({reading_time:-1}).limit(100)
+       const sensor = senor
+       
+
+  
+   
+     arr.forEach( async element => {
+
+ 
+      
+      
+      const err=   sensor.filter(sets => sets.location ===  element.relayNetworkName) 
+         const set =  err.slice(0, 1)
+       
+         if(set.length === 0){
+           console.log('Nsdds')
+         }
+         else {
+         if(set[0].voltage < element.LowerVoltageThreshold  ) {
+           final.push(set[0])
+         }
+        }
+     });
+
+
+    
+
+      let user = await RelayUser.findOne({ _id: req.user.id });
+  
+
+
+  const ress = final.filter(f => user.relayNetwork.some(item => item.relayName   === f.location));
+
+
+
+  res.json(ress)
+
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+}
+)
+
+router.get(
+  '/relayUserRelay',
+  auth,
+  async (req, res) => {
+  
+ 
+    try {
+      console.log(req.user.id)
+      const senor =  await Sensor.find({})
+      const sensor = senor.reverse()
+
+      let user = await RelayUser.findOne({ _id: req.user.id });
+  
+
+  
+      
+  res.json(user.relayNetwork.reverse())
+    
+
+      
+
+     
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  }
+);
+
+
+router.get(
+  '/relaylist',
+  auth,
+  async (req, res) => {
+  
+ 
+
+      try {
+
+
+        const data = await    RelayUser.findOne({_id: req.user.id})
+   
+   
+   
+        const sensors = await    Sensor.find({}).sort({reading_time:-1}).limit(200)
+   
+        // const set = {
+        //   sensors : sensors,
+        //   data:data.relayNetwork.reverse()
+        // }
+        // res.json(set)
+
+        const arr = []
+
+        const set = data.relayNetwork.reverse()
+
+
+        set.forEach(element => {
+          
+          console.log(element)
+          
+          
+
+          const err =   sensors.filter(sets => sets.location ===  element.relayName) 
+            
+            
+            
+        arr.push(err.slice(0, 1)[0])
+          
+        });
+
+        res.json(arr)
+   
+   
+   
+   
+   
+   
+   
+       } catch (err) {
+         console.error(err.message);
+         res.status(500).send('Server error');
+       }
+   
+  }
+);
+
+
+
+//appp
+ 
+
 
 
 router.post(
@@ -854,7 +1051,9 @@ async (req, res) => {
      const senor =  await Sensor.find().sort({reading_time:-1}).limit(100)
        const sensor = senor
        
+ 
 
+       console.log(sensor)
   
    
      arr.forEach( async element => {

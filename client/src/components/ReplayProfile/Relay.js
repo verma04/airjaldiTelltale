@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import Notifications from './Notifications'
 import moment from 'moment'
 import Users from './Users'
+import Comment from './Comment'
 
 import {
   LineChart,
@@ -193,7 +194,9 @@ const params = useParams()
 
 
 <Json  sens={data.sensors}  id={params.id} sensor={data.sensors} data ={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} relay={params.relay} />
-  </Section >
+ 
+ 
+ </Section >
 
         
    
