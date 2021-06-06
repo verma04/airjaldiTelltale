@@ -834,7 +834,7 @@ router.get(
    
    
    
-        const sensors = await    Sensor.find({}).sort({reading_time:-1}).limit(200)
+        const sensors = await    Sensor.find({}).sort({reading_time:-1}).limit(2000)
    
         // const set = {
         //   sensors : sensors,
