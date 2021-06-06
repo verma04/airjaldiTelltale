@@ -346,14 +346,15 @@ async (req, res) => {
   
     const set  =  element.relayNetwork.filter(sets => sets.relayName === req.params.id) 
    
-  if(set > 0) {
+  
+  if(set.length > 0) {
     arr.push(element)
   }
 
      });
 
 
-     res.json(users)
+     res.json(arr)
 
 
 
