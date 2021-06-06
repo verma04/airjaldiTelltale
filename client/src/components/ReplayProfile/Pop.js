@@ -11,7 +11,7 @@
   align-items:center;
   @media (min-width: 1281px) {
   
-    .modal {
+    .modal-1 {
    /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1111; /* Sit on top */
@@ -26,7 +26,7 @@
 }
 
 /* Modal Content */
-.modal-content {
+.modal-content-1 {
   background-color: #fefefe;
   margin: auto;
   padding: 1rem;
@@ -38,7 +38,7 @@ display: flex;
 justify-content: center;
 
 
-  .login-box {
+  .login-box-1  {
  
         
          width: 100%;
