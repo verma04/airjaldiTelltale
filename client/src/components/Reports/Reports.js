@@ -89,7 +89,7 @@ const [ relay , setrelay] = useState('')
         <Section>
 
       <div className="field" >
-        <label>Select City</label>
+        <label>Select Network</label>
 <Select 
 value={city}
 onChange={handleChange}

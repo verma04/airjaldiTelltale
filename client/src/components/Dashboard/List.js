@@ -86,7 +86,7 @@ function Dash({id}) {
         (
             <div className='not-found' >
 
-<h2>No Relay Found</h2>
+<h2>All Relay Working</h2>
 
                 </div> 
             
@@ -100,7 +100,7 @@ function Dash({id}) {
                 <div className="tower" >
      <ul>
                     <li className="net_name" >{number.location}</li>
-                    <li>Network Name</li>
+                    <li>{number.network}</li>
                     <li>The network needs your attention</li>
                 </ul>
    <ReactSpeedometer

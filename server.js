@@ -55,7 +55,7 @@ mongoose
       connect.collection('test').find().sort({reading_time:-1}).limit(200).toArray(function(err, names) {
        
   
-      
+      console.log(names.slice(0, 10))
 
           if(!err) {
     
