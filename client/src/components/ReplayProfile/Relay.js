@@ -191,7 +191,7 @@ const params = useParams()
 
 <Users id={params.id} relayData={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} relay={params.relay} />
 
-
+<Comment  network={params.id} relay={params.relay}  />
 
 <Json  sens={data.sensors}  id={params.id} sensor={data.sensors} data ={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} relay={params.relay} />
  

@@ -43,6 +43,42 @@ const NetworkSchema = new Schema({
         required: true
     },
    
+    coment: [
+      {
+          avatar:{
+          type: String,
+          required: true
+      },
+      email:{
+          type: String,
+          required: true
+      },
+       name:{
+          type: String,
+          required: true
+      },
+  
+  
+      coment:{
+          type: Object,
+          required: true
+      },
+      date: {
+        type: Date,
+        default: Date.now
+      },
+      
+  
+     
+     
+      
+      
+      
+      
+  
+     
+    }
+  ]
     
     
     
@@ -60,7 +96,7 @@ const NetworkSchema = new Schema({
   
 
 
-});
+} ,  { minimize: false });
 
 
 

@@ -884,6 +884,66 @@ router.get(
 );
 
 
+router.get(
+  '/getcoment/:network/:relay',
+  auth,
+  async (req, res) => {
+  
+ 
+
+      try {
+
+
+       
+   
+    const set  = await  Network.findOne({  networkName: req.params.network  })
+
+
+        
+        
+          const com=   set.relayNetwork.filter(sets => sets.relayNetworkName ===  req.params.relay) 
+            
+      res.json(com[0].coment)
+   
+   
+       } catch (err) {
+         console.error(err.message);
+         res.status(500).send('Server error');
+       }
+   
+  }
+);
+
+router.post(
+  '/addcoment',
+  auth,
+  async (req, res) => {
+  
+ 
+
+      try {
+
+
+        console.log(req.body)
+   
+        Network.findOneAndUpdate({  networkName: req.body.network ,  "relayNetwork.relayNetworkName": req.body.location   },{  $push: { "relayNetwork.$.coment": req.body  }  },  { new: true, upsert: true },function(err, doc) {
+
+
+          console.log(doc)
+        
+        
+        
+            });
+   
+   
+   
+       } catch (err) {
+         console.error(err.message);
+         res.status(500).send('Server error');
+       }
+   
+  }
+);
 
 //appp
  
@@ -926,7 +986,8 @@ router.post(
         user: {
           id: user.id,
           name:user.name,
-          email:user.email
+          email:user.email,
+          avatar:user.avatar
         }
       };
 
@@ -1099,6 +1160,28 @@ async (req, res) => {
 }
 )
 
+
+router.get('/realyInfo/:id',
+
+async (req, res) => {
+
+  
+  try {
+
+ 
+      const set = await Sensor.findOne({location:req.params.id}).sort({reading_time:-1}).limit(1)
+
+     
+    res.json(set)
+    
+ 
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+}
+)
 
 
 
