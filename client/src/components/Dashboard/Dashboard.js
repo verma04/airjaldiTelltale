@@ -3,6 +3,7 @@ import { Section } from './Style'
 import List from './List'
 import { useQuery } from "react-query";
 import moment  from "moment"
+import { useHistory } from "react-router-dom";
 const fetchNotifications = async (id) => {
 
 
@@ -14,6 +15,7 @@ const fetchNotifications = async (id) => {
     return res.json();
   };
 function Network() {
+    let history = useHistory();
     const { data:data1, status:status1  } = useQuery("DashboardDet" , fetchDashboardDet )
     const { data, status  , isFetching } = useQuery("Notifications" , fetchNotifications ,
     {
@@ -72,7 +74,7 @@ function Network() {
     {data.map(number => 
     
     <li>
-    <div style={{background:`${number.status}`}}   className="i" > <i  class="fas fa-broadcast-tower"></i></div> <span><h5>{number.location}({number.network}) {number.message}  </h5><h6>{moment(number.reading_time).format("dddd, MMMM Do YYYY, h:mm:ss a")}</h6></span> </li>
+    <div  onClick={() => history.push(`/network/${number.network}/${number.location}`) } style={{background:`${number.status}`}}   className="i" > <i  class="fas fa-broadcast-tower"></i></div> <span><h5>{number.location}({number.network}) {number.message}  </h5><h6>{moment(number.reading_time).format("dddd, MMMM Do YYYY, h:mm:ss a")}</h6></span> </li>
 
 
     )

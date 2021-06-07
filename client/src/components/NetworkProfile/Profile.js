@@ -152,7 +152,7 @@ const params = useParams()
     style={{marginTop:"1rem" ,}}
     textColor={"red"}
     width={200}
-    height={200}
+    height={125}
     segmentColors={[
       "#bf616a",
       "#d08770",

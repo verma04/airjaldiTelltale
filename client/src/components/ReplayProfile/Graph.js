@@ -13,6 +13,7 @@ import {
     Line,
     ComposedChart,
     Area,
+    ResponsiveContainer,
     Bar
   } from "recharts";
   import DatePicker from "react-datepicker";
@@ -88,11 +89,11 @@ return (
     </div>
   ):
   (
+    <ResponsiveContainer width="100%" height={400}>
     <LineChart
 
       
-    width={1300}
-    height={400}
+    
     data={final.reverse()}
     margin={{ top: 5,  right: 30, left: 20, bottom: 5 }}
   >
@@ -111,7 +112,7 @@ return (
     <Line type="monotone" dot={false} dataKey="LowerVoltageThreshold" stroke="red" />
     <Line type="monotone" dot={false} dataKey="UpperVoltageThreshold" stroke="#82ca9d" />
   </LineChart>
-
+</ResponsiveContainer>
 
   )
 

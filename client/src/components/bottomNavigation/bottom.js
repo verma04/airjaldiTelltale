@@ -13,13 +13,13 @@ function Bottom() {
         <Fixed>
             <div className="flex" >
            <div  onClick={()  => router.push({
-    pathname: '/dashboard',
+    pathname: '/',
 }) }  id={splitLocation[1] === "" ? "active" : ""}  className="flex-1" >
            <i class="fas fa-signal"></i>
            <span>Home</span>
            </div>
            <div onClick={()  => router.push({
-    pathname: '/services',
+    pathname: '/network',
 }) }  id={splitLocation[1] === "network" ? "active" : ""}  className="flex-1" >
            <i class="fas fa-network-wired"></i>
            <span>Network</span>
@@ -33,13 +33,13 @@ function Bottom() {
            </div>
            <div onClick={()  => router.push({
     pathname: '/reports',
-}) }  id={router.pathname == "/reports" ? "active" : ""} className="flex-1" >
+}) }  id={router.pathname == "reports" ? "active" : ""} className="flex-1" >
        <i class="fas fa-chart-line"></i>
-           <span>Users</span>
+           <span>Reports</span>
            </div>
         
            <div onClick={()  => router.push({
-    pathname: '/alert',
+    pathname: '/users',
 }) }  id={router.pathname == "/users" ? "active" : ""} className="flex-1" >
        <i class="fas fa-users"></i>
            <span>Users</span>
