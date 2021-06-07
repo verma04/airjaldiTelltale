@@ -133,7 +133,7 @@ const params = useParams()
 <ul>
 
 <li>{index +1}.</li>
-<li>{number.relayNetworkName}.</li>
+<li>{number.relayNetworkName}</li>
 <li>{data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].network}</li>
 
 <li>
