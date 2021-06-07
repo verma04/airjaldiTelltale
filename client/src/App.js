@@ -28,7 +28,7 @@ import { GoogleFonts } from "next-google-fonts";
 import Dashborad from './components/Dashboard/Dashboard'
 import Users from './components/Users/Users'
 import Relay from './components/ReplayProfile/Relay'
-
+import AllRely from './components/AllRelays/Profile'
 
   function App() {
   if (localStorage.jwtToken) {
@@ -72,7 +72,8 @@ import Relay from './components/ReplayProfile/Relay'
        <Route exact path="/Userlogin" component={UserLogin} />
        <PrivteRoute  exact path="/network/:id" component={Profile} />
        <PrivteRoute  exact path="/network/:id/:relay" component={Relay} />
-       <PrivteRoute  exact path="/users" component={Users} />
+         <PrivteRoute  exact path="/users" component={Users} />
+         <PrivteRoute  exact path="/allrelays" component={AllRely} />
        <PrivteRoute  exact path="/reports" component={Reports} />
        </Switch>
        </Router>

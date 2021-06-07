@@ -118,7 +118,7 @@ const params = useParams()
 </div>
 <div className="left-bottom" >
 
-<li><h4>Current Voltage</h4><span>{data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].voltage}</span></li>
+<li><h4>Current Voltage</h4><span>{ parseFloat(data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].voltage).toFixed(1)}</span></li>
 <li><h4>Ampere</h4><span> {data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].batteryampere} </span></li>
 </div>
     </div> 

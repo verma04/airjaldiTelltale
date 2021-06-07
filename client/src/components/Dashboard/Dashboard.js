@@ -104,7 +104,7 @@ function Network() {
  <div className="network" >
  
  
- <div className="tower" >
+ <div onClick={() => history.push("/network") } className="tower" >
 
 
  <i class="fas fa-broadcast-tower"></i>
@@ -116,7 +116,7 @@ function Network() {
      
  </div>
 
- <div className="tower" >
+ <div onClick={() => history.push("/network") }  className="tower" >
 
 
 <i class="fas fa-broadcast-tower"></i>
@@ -128,7 +128,7 @@ function Network() {
     
 </div>
 
-<div className="tower" >
+<div onClick={() => history.push("/allrelays") }  className="tower" >
 
 
 <i class="fas fa-broadcast-tower"></i>
@@ -140,7 +140,7 @@ function Network() {
     
 </div>
 
-<div className="tower" >
+<div  onClick={() => history.push("/users") }  className="tower" >
 
 
 <i class="fas fa-broadcast-tower"></i>

@@ -417,6 +417,55 @@ async (req, res) => {
 }
 )
 
+router.get('/allrelay',
+
+async (req, res) => {
+
+
+
+
+  try {
+
+    const net   = await   Network.find({})
+
+
+   
+    
+    const arr = []
+
+    net.forEach(element => {
+   
+
+      arr.push(...element.relayNetwork)
+      
+    });
+    
+    const sensors = []
+  
+    const set = await Sensor.find({}).sort({reading_time:-1}).limit(1000)
+  
+    
+
+
+
+
+
+          
+  const data = {
+    data:arr,
+    sensors:set
+  }
+
+res.json(data)
+
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+}
+)
+
 
 router.post('/addUser',
 
