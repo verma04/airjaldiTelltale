@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Section} from '../comman/Style'
 import Navbar from '../Navbar/Navbar'
 import SideBar from '../Sidebar/Sidebar'
+import Bottom from '../bottomNavigation/bottom'
 const PrivateRoute = ({
   component: Component,
   auth: { isAuthenticated, loading },
@@ -18,6 +19,7 @@ const PrivateRoute = ({
       ) : isAuthenticated ? (
         <>
         <Navbar/>
+        <Bottom/>
         <SideBar/>
         <Section>
         <Component {...props} />
