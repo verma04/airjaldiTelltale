@@ -77,6 +77,10 @@ align-items: left;
       color: #637381;
 
   }
+  li:nth-child(1){
+    font-size: 0.7rem;
+    font-weight: 900;
+  }
       }
   }
    }

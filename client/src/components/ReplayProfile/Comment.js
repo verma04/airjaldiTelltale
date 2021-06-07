@@ -35,8 +35,8 @@ function Comment({auth:{user}, network , relay}) {
             network:network,
              location:relay,
             _id:user.user.id,
-            avatar:user.user.avatar,
-            name:user.user.name,
+            avatar:"https://res.cloudinary.com/airjaldi/image/upload/v1623050752/download_aolpnf.png",
+            name:"admin",
             email:user.user.email,
             coment:convertToRaw(coment.getCurrentContent()),
             
@@ -87,6 +87,7 @@ const sendata = async (data) => {
                 <img src={number.avatar} />
             </div>
             <ul>
+            <li  >{number.name}</li>
                 <li dangerouslySetInnerHTML={convertFromJSONToHTML(number.coment)} ></li>
                 <li className="date" > {moment(number.date).format("dddd, MMMM Do YYYY, h:mm:ss a")}</li>
             </ul>
