@@ -40,10 +40,11 @@
       display: flex;
   justify-content: flex-start;
 align-items: center;
-
+overflow: auto;
   flex-direction: column;
   .box {
       padding: 1rem;;
+    
       background: #FFFFFF;
     box-shadow: 0px 12px 24px rgb(0 0 0 / 15%);
       margin-top: 1rem;

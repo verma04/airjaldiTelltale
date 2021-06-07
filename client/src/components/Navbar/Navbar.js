@@ -47,6 +47,35 @@ function Navbar({logoutUser , auth:{isAuthenticated , user}}) {
 
                 </div>
                 </div>
+                <div className='flex-sm' >
+
+                <div className='left' >
+                    <div onClick={() => this.props.clickme()} className="wrapper" >
+                    <i className="fas fa-bars"></i>
+                </div>
+
+                
+                </div>
+            <div className='mid' >
+
+            <img src={'https://res.cloudinary.com/airjaldi/image/upload/v1621922035/logo_1_nzz4cs.png'} ></img>
+
+                </div>
+              
+                <div className='right' >
+   
+  
+
+              
+                {isAuthenticated ? (   <i  onClick={() => logoutUser() } className="fas fa-sign-out-alt"></i>  ) : (  <span> </span> )}
+
+
+
+                </div>
+                </div>
+           
+           
+           
             </Nav>
         </div>
     )

@@ -27,6 +27,28 @@ align-items: center;
      height:10%;
      align-items: center;
       position: relative;
+   
+      .add-users {
+        top:-2rem;
+        right: 0;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 17%;
+        height: 70%;
+        background: #ECE9F1;
+        cursor: pointer;
+  i {
+color: #5B5B5B;
+font-size: 1.4rem;
+
+  }
+  span {
+    font-family: Montserrat-Bold;
+    background: ${props => props.theme.colors.brown};
+  }
+    }
     
      .head  {
        width:90%;
