@@ -119,8 +119,9 @@ const params = useParams()
 <div className="data-head" >
 
 <li>Sr. No.</li>
-<li>Realy Name</li>
+
 <li>Location</li>
+<li>Realy Name</li>
 <li>Status</li>
 
 <li>Action</li>
@@ -133,9 +134,8 @@ const params = useParams()
 <ul>
 
 <li>{index +1}.</li>
-<li>{number.relayNetworkName}</li>
 <li>{data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].network}</li>
-
+<li>{number.relayNetworkName}</li>
 <li>
 
 
