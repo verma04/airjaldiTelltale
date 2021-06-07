@@ -58,7 +58,7 @@ align-items: center;
           justify-content: center;
           img{
               height: 90%;
-              width: 30%;
+              width: 50%;
           }
 
 
