@@ -92,7 +92,7 @@
 
 
 import React from 'react'
- import Clock from 'react-live-clock';
+ 
  import browser from 'browser-detect';
  import { Section} from './Style'
  import { useQuery } from "react-query";
