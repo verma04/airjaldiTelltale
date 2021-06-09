@@ -44,6 +44,7 @@ tr {
 #con {
     margin-left: 1.5rem;;
     margin-right: 1rem;
+     font-size:1.3rem;
 }
 
 th:nth-child(3){
