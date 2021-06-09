@@ -44,10 +44,10 @@ function AddUser({setAdd}) {
  {
 toast.error("Upload Image")
  }
- if ( img==="https://res.cloudinary.com/dzcmadjl1/image/upload/v1610515663/HimTrek/nkvy6wlmekzb80khdi2f.gif" ) (
+  else if ( img==="https://res.cloudinary.com/dzcmadjl1/image/upload/v1610515663/HimTrek/nkvy6wlmekzb80khdi2f.gif" ) (
   toast.error("Image Uploading")
  )
- if ( relay ==="" ) {
+  else if ( relay ==="" ) {
   toast.error("Enter Network Relay")
  }  
  else {
@@ -71,7 +71,7 @@ toast.error("Upload Image")
         const errors = err.response.data.errors;
   
           if (errors) {
-            errors.forEach(error => toast.error(error.msg));
+ toast.error(errors.msg)
           }
       }
 

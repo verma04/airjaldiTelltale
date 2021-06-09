@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const MongoClient = require("mongodb");
 const User = require("../models/User");
-
+const Activity = require('../models/Activity')
 const { check, validationResult } = require('express-validator');
 const bcrypt = require("bcryptjs");
 const moment = require('moment')
@@ -475,15 +475,34 @@ async (req, res) => {
 
 
   try {
-  
     const { email} = req.body;
-    
+    console.log(req.body)
+    let user = await RelayUser.findOne({ email });
+
+    if (user) {
+      return res
+        .status(400)
+        .json({ errors: { msg: 'User already exists' } });
+    }
+    else {
+  
+ 
     const data = await RelayUser.create(req.body)
  
     res.json(data)
 
+  const mess = {
+    message:`New User created  `
+
+  }
+
+ 
+
+  const data1 = await Activity.create(mess)
+  console.log(data1)
 
 
+    }
 
           
 
@@ -506,7 +525,15 @@ async (req, res) => {
 
   try {
   
+
+    const mess = {
+      message:`User with id ${req.params.id} is deleted `
+  
+    }
     
+
+    const data1 = await Activity.create(mess)
+    console.log(data1)
     
     const data = await RelayUser.findOneAndDelete({_id: req.params.id})
  

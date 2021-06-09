@@ -130,7 +130,66 @@ const params = useParams()
 
 {data.data.map( ( number , index) =>  
 
+<>
+{data.sensors.filter(sets => sets.location === number.relayNetworkName)[0] === undefined ? 
+(
+<ul>
 
+<li>{index +1}.</li>
+<li></li>
+<li>{number.relayNetworkName}</li>
+<li>
+
+
+  {data.sensors.filter(sets => sets.location === number.relayNetworkName)[0]===   undefined ?
+  (
+<div>Sensor Not working</div>
+  ):
+  (
+
+<ReactSpeedometer
+    maxValue={16}
+    value={data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].voltage}
+    valueFormat={'d'}
+    customSegmentStops={[ 0 ,10 , 12 ,  14 ,  16]}
+    style={{marginTop:"1rem" ,}}
+    textColor={"red"}
+    width={200}
+    height={125}
+    segmentColors={[
+      "#bf616a",
+      "#d08770",
+      "#ebcb8b",
+      "#a3be8c",
+      "#b48ead",
+    ]}
+  />
+  )
+
+  }
+
+
+
+
+
+</li>
+
+<li>
+ 
+{data.sensors.filter(sets => sets.location === number.relayNetworkName)[0] == undefined ? 
+
+
+(<span   >View</span> ):
+
+(<span  onClick={()=> history.push(`/network/${data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].network}/${number.relayNetworkName}`)} >View</span> )
+
+
+}
+</li>
+</ul>
+
+)
+: (
 <ul>
 
 <li>{index +1}.</li>
@@ -186,6 +245,11 @@ const params = useParams()
 </li>
 </ul>
   
+)
+
+}
+
+  </>
 )}
 
 

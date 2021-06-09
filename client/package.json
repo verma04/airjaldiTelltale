@@ -13,6 +13,7 @@
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "brunch": "^4.0.0",
     "config": "^3.3.6",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
@@ -86,7 +87,11 @@
     ]
   },
   "devDependencies": {
-    "terser-brunch": "^4.0.0"
+    "html-webpack-plugin": "^4.5.0",
+    "terser-brunch": "^4.0.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.1"
   },
   "proxy": "http://localhost:5000"
 }
