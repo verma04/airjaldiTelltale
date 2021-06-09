@@ -20,6 +20,9 @@
 table {
     width: 100%;
 }
+h1 {
+    font-family: Montserrat-Bold;
+}
 tr {
     display: flex;
     justify-content: flex-start;
