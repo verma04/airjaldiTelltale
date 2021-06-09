@@ -36,7 +36,7 @@
   align-items: center;;
   justify-content: flex-start;
   flex-direction: column;
-  background: #FFFFFF;
+   background-color:  ${props => props.theme.colors.background};
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
   .head {
       height: 10%;
@@ -168,7 +168,7 @@
  width: 40%;
   .notifications {
     height: 30rem;
-    background: #FFFFFF;
+     background-color:  ${props => props.theme.colors.background};
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
  
   width: 100%;
@@ -278,7 +278,7 @@ margin-bottom: 0.5rem;
     align-items: center;
     flex-direction: column;
     height: 45%;
-    background: #FFFFFF;
+     background-color:  ${props => props.theme.colors.background};
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
   border-radius: 0.5rem;
    i {
@@ -337,7 +337,7 @@ margin-bottom: 0.5rem;
     align-items: center;;
     justify-content: flex-start;
     flex-direction: column;
-    background: #FFFFFF;
+     background-color:  ${props => props.theme.colors.background};
     box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
     .head {
         height: 10%;
@@ -471,7 +471,7 @@ margin-bottom: 0.5rem;
    width: 95%;
     .notifications {
       height: 30rem;
-      background: #FFFFFF;
+       background-color:  ${props => props.theme.colors.background};
     box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
    
     width: 100%;
@@ -581,7 +581,7 @@ margin-bottom: 0.5rem;
       align-items: center;
       flex-direction: column;
       height: 45%;
-      background: #FFFFFF;
+       background-color:  ${props => props.theme.colors.background};
     box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
     border-radius: 0.5rem;
      i {

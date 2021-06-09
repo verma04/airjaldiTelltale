@@ -33,7 +33,7 @@
   align-items: center;;
   justify-content: space-evenly;
   flex-direction: column;
-  background: #FFFFFF;
+   background-color:  ${props => props.theme.colors.background};
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
    
    .top{
@@ -136,7 +136,7 @@ width: 49%;
  width: 40%;
   .notifications {
     height: 20rem;
-    background: #FFFFFF;
+     background-color:  ${props => props.theme.colors.background};
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
   border-radius: 0.5rem;
   width: 100%;
@@ -250,7 +250,7 @@ margin-bottom: 0.5rem;
     border-radius:1rem;
    width: 48%;
    height: 100%;
-   background: #FFFFFF;
+    background-color:  ${props => props.theme.colors.background};
    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
    display: flex;
   justify-content: center;
@@ -384,7 +384,7 @@ height: 30%;
     border-radius:1rem;
    width: 48%;
    height: 100%;
-   background: #FFFFFF;
+    background-color:  ${props => props.theme.colors.background};
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
   
   display: flex;
@@ -590,7 +590,7 @@ height: 30%;
   align-items: center;;
   justify-content: space-evenly;
   flex-direction: column;
-  background: #FFFFFF;
+   background-color:  ${props => props.theme.colors.background};
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
    
    .top{
@@ -694,7 +694,7 @@ width: 49%;
  width: 100%;
   .notifications {
     height: 20rem;
-    background: #FFFFFF;
+     background-color:  ${props => props.theme.colors.background};
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
   border-radius: 0.5rem;
   width: 100%;
@@ -811,7 +811,7 @@ margin-bottom: 0.5rem;
     border-radius:1rem;
    width: 95%;
 
-   background: #FFFFFF;
+    background-color:  ${props => props.theme.colors.background};
    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
    display: flex;
   justify-content: center;
@@ -945,7 +945,7 @@ height: 30%;
     border-radius:1rem;
    width: 95%;
    height: 15rem;
-   background: #FFFFFF;
+    background-color:  ${props => props.theme.colors.background};
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
   
   display: flex;

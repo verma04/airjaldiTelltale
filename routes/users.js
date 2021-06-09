@@ -1339,4 +1339,33 @@ async  (req, res) => {
   
   });
 
+
+  router.get("/getActivity",   auth,
+
+async  (req, res) => {
+      
+  
+
+  
+    try {
+
+      const cctivity = await    Activity.find({}).sort({date:-1}).limit(200)
+    
+      res.json(cctivity)
+      // else {
+
+      //   const isMatch = await bcrypt.compare(password, user.password);
+      // }
+    
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+      
+     
+  
+  
+  });
+
+
 module.exports = router;

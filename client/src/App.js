@@ -7,10 +7,10 @@ import Network from './components/Network/Network'
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { setCurrentUser , sessionExpire } from './redux/actions/authActions';
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect , useState } from 'react';
 import { ThemeProvider } from "styled-components";
 import { GoogleFonts } from "next-google-fonts";
- import theme from './theme/colors';
+ import { lightTheme, darkTheme }  from './theme/colors';
  import { ReactQueryDevtools } from 'react-query/devtools'
  import GlobalFonts from './theme/theme';
  import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -22,7 +22,7 @@ import { GoogleFonts } from "next-google-fonts";
  import jwt_decode from "jwt-decode";
   import Dash from './components/Dash'
   import Login from './components/Auth/Login'
- 
+ import Activity from './components/Activitiy/Activity'
   import PrivteRoute from './components/private-route/PrivateRoute'
   import Profile from './components/NetworkProfile/Profile'
 import Dashborad from './components/Dashboard/Dashboard'
@@ -54,6 +54,29 @@ import UpdatePassword from './components/password/password'
   }
 
   }
+ 
+  const [theme, themeToggler] = useState(lightTheme);
+
+  // useEffect( async  () => {
+  //   var d = new Date();
+  //   console.log(d.getHours());
+  //   if(d.getHours() > 17 ){
+  //    await themeToggler(darkTheme)
+  //   console.log(d.getHours() , "night")
+  //   }
+  //   else if (d.getHours() < 6){
+  //     await themeToggler(darkTheme)
+  //     console.log(d.getHours() , "night")
+  //   }
+  //   else {
+  //     await    themeToggler(lightTheme)
+  //     console.log(d.getHours() , "Day")
+  //   }
+  
+  // }, [])
+
+ 
+ 
   const queryClient = new QueryClient();
   return (
  <>
@@ -71,7 +94,7 @@ import UpdatePassword from './components/password/password'
        <PrivteRoute  exact path="/" component={Dashborad} />
        <PrivteRoute  exact path="/" component={Dashborad} />
        <Route exact path="/login" component={Login} />
-      
+       <PrivteRoute  exact path="/activities" component={Activity} />
        <PrivteRoute  exact path="/network/:id" component={Profile} />
        <PrivteRoute  exact path="/network/:id/:relay" component={Relay} />
          <PrivteRoute  exact path="/users" component={Users} />

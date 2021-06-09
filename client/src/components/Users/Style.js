@@ -22,7 +22,7 @@
       justify-content: space-evenly;
       align-items: center;
       flex-direction: column;
-      background: #FFFFFF;
+      background-color:  ${props => props.theme.colors.background};
 box-shadow: 0px 0px 2px rgba(145, 158, 171, 0.24), 0px 16px 32px -4px rgba(145, 158, 171, 0.24);
 border-radius: 15px;
 height: 40rem;
@@ -46,7 +46,7 @@ height: 40rem;
         justify-content: space-evenly;
         width: 20%;
         height: 70%;
-        background: #ECE9F1;
+        background-color:  ${props => props.theme.colors.dark2};
   i {
 color: #5B5B5B;
 font-size: 1.4rem;
@@ -72,7 +72,7 @@ font-size: 1.4rem;
     width: 100%;
     height: 10%;
     align-items: center; 
-    background: #F4F6F8;
+    background-color:  ${props => props.theme.colors.dark2};
 border-radius: 8px;
 li {
     list-style: none;
@@ -237,7 +237,7 @@ li:nth-child(5) {
       justify-content: space-evenly;
       align-items: center;
       flex-direction: column;
-      background: #FFFFFF;
+      background-color:  ${props => props.theme.colors.background};
 box-shadow: 0px 0px 2px rgba(145, 158, 171, 0.24), 0px 16px 32px -4px rgba(145, 158, 171, 0.24);
 border-radius: 15px;
 height: 30rem;

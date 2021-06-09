@@ -55,9 +55,9 @@ Reports
              </div>
 
 
-             <div    className="icon" >
+             <div    id={splitLocation[1] === "activities" ? "active" : ""}  className="icon" >
                 <i className="fas fa-file-archive"></i>
-             <Link  to="/"  >Log
+             <Link  to="/activities"  >Log
 
 </Link>
              </div>

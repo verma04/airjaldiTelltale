@@ -10,7 +10,7 @@ z-index: 1;
 @media (min-width: 1025px) {
  
 min-height:5rem;
-background: #FFFFFF;
+background-color:  ${props => props.theme.colors.background};
 box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
 
 width:100%;
