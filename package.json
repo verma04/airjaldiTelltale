@@ -17,6 +17,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.2",
+    "browser-detect": "^0.2.28",
     "concurrently": "^4.1.2",
     "config": "^3.3.6",
     "cors": "^2.8.5",
@@ -42,7 +43,8 @@
     "passport-jwt": "^4.0.0",
     "razorpay": "^2.0.6",
     "react-draft-wysiwyg": "^1.14.7",
-    "react-hook-form": "^7.7.1"
+    "react-hook-form": "^7.7.1",
+    "react-live-clock": "^5.2.0"
   },
   "author": "",
   "license": "ISC",

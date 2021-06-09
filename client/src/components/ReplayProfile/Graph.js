@@ -21,7 +21,7 @@ import {
 import "react-datepicker/dist/react-datepicker.css";
 import { Section } from './GraphStyle'
 function Graph({data , relayData}) {
-
+console.log(relayData)
 
   const [startDate, setStartDate] = useState(new Date().setDate( new Date().getDate()  -1));
   const [endDate, setendDate] = useState( new Date());
@@ -101,8 +101,8 @@ return (
     <XAxis dataKey="reading_time" />
     <YAxis 
        
-       ticks={[8 , 12, 13,  16]}
-       domain={[8, 16]}
+       ticks={[  relayData[0].LowerVoltageThreshold / 1.5   , relayData[0].LowerVoltageThreshold, relayData[0].UpperVoltageThreshold , relayData[0].UpperVoltageThreshold + 2.5]}
+       domain={[ relayData[0].LowerVoltageThreshold / 1.5 ,  relayData[0].UpperVoltageThreshold + 2.5]}
 
     
     />

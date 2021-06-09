@@ -103,7 +103,7 @@ const delnews = async (id) => {
 
             <div className="field" >
               <label>Upper Voltage Threshold</label>
-            <input   id={errors.UpperVoltageThreshold ? "active" : ""}  defaultValue="test" {...register("UpperVoltageThreshold", { required: true })} type="number" defaultValue={relayData[0].UpperVoltageThreshold} />
+            <input   id={errors.UpperVoltageThreshold ? "active" : ""}  defaultValue="test" {...register("UpperVoltageThreshold", { required: true })} type="number" step="any" defaultValue={relayData[0].UpperVoltageThreshold} />
             </div>
             <div className="field" >
               <label>Standard Voltage</label>
@@ -111,7 +111,7 @@ const delnews = async (id) => {
             </div>
             <div className="field" >
               <label    >Lower Voltage Threshold</label>
-            <input  id={errors.LowerVoltageThreshold ? "active" : ""}  {...register("LowerVoltageThreshold", { required: true })}  type="number" defaultValue={relayData[0].LowerVoltageThreshold}/>
+            <input  id={errors.LowerVoltageThreshold ? "active" : ""}  {...register("LowerVoltageThreshold", { required: true })}  type="number" step="any" defaultValue={relayData[0].LowerVoltageThreshold}/>
             </div>
           </div>
           <div className="btn" >

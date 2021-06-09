@@ -89,13 +89,14 @@
 
   .zone-city {
     height: 25rem;
- 
+    cursor: pointer;
     width: 100%;
     flex-wrap: wrap;
     display: flex;
     justify-content: flex-start;
     align-items: space-evenly;
     .tower {
+    
       margin-top: 2rem;
       margin-bottom: 3rem;
         width: 48%;
@@ -108,6 +109,7 @@
  
   border-radius: 0.5rem;
    i {
+    cursor: pointer;
        font-size: 4rem;;
        color: ${props => props.theme.colors.blue}; 
    }

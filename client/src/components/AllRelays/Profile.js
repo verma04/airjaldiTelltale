@@ -148,10 +148,10 @@ const params = useParams()
   (
 
 <ReactSpeedometer
-    maxValue={16}
+    maxValue={number.UpperVoltageThreshold + 2.5}
     value={data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].voltage}
     valueFormat={'d'}
-    customSegmentStops={[ 0 ,10 , 12 ,  14 ,  16]}
+    customSegmentStops={[ 0 ,number.LowerVoltageThreshold / 1.5 , number.LowerVoltageThreshold ,  number.UpperVoltageThreshold + 2.5]}
     style={{marginTop:"1rem" ,}}
     textColor={"red"}
     width={200}
@@ -205,10 +205,10 @@ const params = useParams()
   (
 
 <ReactSpeedometer
-    maxValue={16}
+    maxValue={number.UpperVoltageThreshold + 2.5}
     value={data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].voltage}
     valueFormat={'d'}
-    customSegmentStops={[ 0 ,10 , 12 ,  14 ,  16]}
+    customSegmentStops={[ 0 ,number.LowerVoltageThreshold / 1.5 , number.LowerVoltageThreshold ,  number.UpperVoltageThreshold ,  number.UpperVoltageThreshold + 2.5]}
     style={{marginTop:"1rem" ,}}
     textColor={"red"}
     width={200}

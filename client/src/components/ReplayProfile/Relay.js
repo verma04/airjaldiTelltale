@@ -88,6 +88,7 @@ const params = useParams()
     
     );
  
+
     return (
         <>
         {status === "error" && <p>Error fetching data</p>}
@@ -123,13 +124,13 @@ const params = useParams()
 </div>
     </div> 
     <div className="right" >
-
+{console.log()}
 <div  style={{marginTop:"1rem"}} >
     <ReactSpeedometer
-    maxValue={16}
+    maxValue={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].UpperVoltageThreshold + 2.5}
     value={data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].voltage}
     valueFormat={'d'}
-    customSegmentStops={[ 0 ,10 , 12 ,  14 ,  16]}
+    customSegmentStops={[ 0 ,data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].LowerVoltageThreshold / 1.5  ,   data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].LowerVoltageThreshold ,  data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].UpperVoltageThreshold ,  data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].UpperVoltageThreshold + 2.5]}
     style={{marginTop:"1rem" ,}}
     textColor={"red"}
     width={200}

@@ -22,13 +22,15 @@ import { GoogleFonts } from "next-google-fonts";
  import jwt_decode from "jwt-decode";
   import Dash from './components/Dash'
   import Login from './components/Auth/Login'
-  import UserLogin from './User/Auth/Login'
+ 
   import PrivteRoute from './components/private-route/PrivateRoute'
   import Profile from './components/NetworkProfile/Profile'
 import Dashborad from './components/Dashboard/Dashboard'
 import Users from './components/Users/Users'
 import Relay from './components/ReplayProfile/Relay'
 import AllRely from './components/AllRelays/Profile'
+import Settings from './components/Setting/Setting'
+import UpdatePassword from './components/password/password'
 
   function App() {
   if (localStorage.jwtToken) {
@@ -69,12 +71,14 @@ import AllRely from './components/AllRelays/Profile'
        <PrivteRoute  exact path="/" component={Dashborad} />
        <PrivteRoute  exact path="/" component={Dashborad} />
        <Route exact path="/login" component={Login} />
-       <Route exact path="/Userlogin" component={UserLogin} />
+      
        <PrivteRoute  exact path="/network/:id" component={Profile} />
        <PrivteRoute  exact path="/network/:id/:relay" component={Relay} />
          <PrivteRoute  exact path="/users" component={Users} />
          <PrivteRoute  exact path="/allrelays" component={AllRely} />
        <PrivteRoute  exact path="/reports" component={Reports} />
+       <PrivteRoute  exact path="/setting" component={Settings} />
+       <PrivteRoute  exact path="/update-password" component={UpdatePassword} />
        </Switch>
        </Router>
        {/* <div className="App">

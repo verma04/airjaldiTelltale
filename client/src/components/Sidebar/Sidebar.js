@@ -62,9 +62,9 @@ Reports
 </Link>
              </div>
 
-             <div    className="icon" >
+             <div   id={splitLocation[1] === "setting" ? "active" : ""}   className="icon" >
                 <i className="fas fa-cog"></i>
-             <Link  to="/"  >Settings
+             <Link  to="/setting"  >Settings
 
 </Link>
              </div>

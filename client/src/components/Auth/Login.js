@@ -5,15 +5,28 @@ import { ToastContainer, toast } from 'react-toastify';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
+import browser from 'browser-detect';
 
 import { loginUser } from "../../redux/actions/authActions";
 function Login({loginUser , auth:{isAuthenticated}}) {
     const history = useHistory();
+    const result = browser();
     const { register, handleSubmit, watch, errors } = useForm();
     if(isAuthenticated){
         history.push("/")
     }
-  const onSubmit = data => loginUser(data);
+  const onSubmit = data => {
+    const data1 = {
+      message: `  ${result.os}
+      &nbsp;
+      ${result.name}
+      ${result.version}`,
+      ...data
+    } 
+    
+    loginUser(data1);
+
+  }
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);

@@ -62,6 +62,14 @@ const auth = require('../middleware/auth');
             res.json({ token });
           }
         );
+
+        const set = {
+          message: `User Login in device ${req.body.message} `
+        }
+        const data =  await Activity.create(set)
+        console.log(data)
+
+        
       } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');
@@ -311,6 +319,11 @@ async (req, res) => {
      else {
       const network = await Network.create(req.body)
    res.json(network)
+   const set = {
+     message: `New Network Added  ${req.body.networkName} in ${req.body.zone} Zone`
+   }
+   const data =  await Activity.create(set)
+   console.log(data)
      }
 
 
@@ -568,7 +581,7 @@ async (req, res) => {
   
       const data =  await Network.find({})
 
-      data.forEach(element => {
+      data.forEach(   element => {
      
           
       const err=   element.relayNetwork.filter(sets => sets.relayNetworkName === req.body.relayNetworkName) 
@@ -579,7 +592,7 @@ async (req, res) => {
       if(arr.length === 1) {
         return res
         .status(400)
-        .json({ errors: { msg: 'Invalid Credentials' } });
+        .json({ errors: { msg: `${req.body.relayNetworkName} relay Exist` } });
       }
       else {
 
@@ -592,6 +605,11 @@ async (req, res) => {
 
 
     });
+    const set = {
+      message: `New Relay Added  ${req.body.relayNetworkName} in ${req.body.networkName } network`
+    }
+    const data =  await Activity.create(set)
+    console.log(data)
       }
     
 
@@ -1260,5 +1278,65 @@ async (req, res) => {
 )
 
 
+router.patch("/update-password",   auth,
+
+async  (req, res) => {
+      
+  
+
+  const { oldpassword ,newpassword, confirmPassword } = req.body
+     
+    try {
+
+      let user = await User.findOne({_id: req.user.id});
+      
+      const isMatch = await bcrypt.compare(oldpassword, user.password);
+      const isMatch2 = await bcrypt.compare(newpassword, user.password);
+      if(  newpassword  !== confirmPassword ) {
+        return res.status(400).json({ password: "Confirm Passwords must match" });
+      }
+      else if (!isMatch) {
+      
+        return res.status(400).json({ password: "Old Passwords must match" });
+      
+      }
+      else if (isMatch2) {
+      
+        return res.status(400).json({ password: "Your new password must be different from your previous password" });
+      
+      }
+      else {
+
+        const salt = await bcrypt.genSalt(10);
+  
+         const password = await bcrypt.hash(newpassword, salt);
+    
+         console.log(password)
+
+         User.findOneAndUpdate({_id: req.user.id}, {$set:{password:password}}, {new: true}, (err, doc) => {
+          res.json(doc)
+           })
+           const set = {
+            message: `Password Changed by device ${req.body.message} `
+          }
+          const data =  await Activity.create(set)
+          console.log(data)
+            
+
+      }
+      // else {
+
+      //   const isMatch = await bcrypt.compare(password, user.password);
+      // }
+    
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+      
+     
+  
+  
+  });
 
 module.exports = router;
