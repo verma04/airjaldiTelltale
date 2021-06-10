@@ -47,12 +47,12 @@ tr {
 #con {
     margin-left: 1.5rem;;
     margin-right: 1rem;
-     font-size:1.3rem;
+     font-size:0.9rem;
 }
 
 th:nth-child(3){
     color: #637381;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
 }
  
     
