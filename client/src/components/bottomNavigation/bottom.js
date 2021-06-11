@@ -26,8 +26,8 @@ function Bottom() {
            </div>
         
            <div onClick={()  => router.push({
-    pathname: '/',
-}) }  id={router.pathname == "/" ? "active" : ""}  className="flex-1" >
+    pathname: '/setting',
+}) }  id={router.pathname == "/setting" ? "active" : ""}  className="flex-1" >
            <i class="fas fa-cog"></i>
            <span>Settings</span>
            </div>

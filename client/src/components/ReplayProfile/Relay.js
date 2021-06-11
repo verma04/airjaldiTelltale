@@ -100,7 +100,7 @@ const params = useParams()
 
     return (
       <div style={{marginTop:"2rem", fontFamily:"Montserrat-Bold" , color:"Orange"}} >
-      {parseFloat(hours)}:Hours
+    Battery Will Die in :  {parseFloat(hours)}:Hours
       &nbsp;
         {minutes.toFixed(0)}:Minutes
       </div>
