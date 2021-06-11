@@ -121,127 +121,144 @@ const params = useParams()
         {status === "success" && (
 
    <>
-   <Section>
+   {((data.sensors.filter(sets => sets.location === params.relay)).length === 0)
+   ? 
+   (
+     <div>
+
+       <h1  style={{ marginTop:"10rem", fontFamily:"Montserrat-Bold"}} >Relay Not Found in Sensor DataBase List</h1>
+     </div>
+   )
+   :
+   (
+     <Section>
 <div className="flex" >
           
 
-{data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay).map(number =>
-
-<div className="flex-1" >
-
-    <div className="top" >
-
-<div className="left" >
-<div className="left-top" >
-<i class="fas fa-broadcast-tower"></i>
-
-<li><span>Relay Name</span><span>{params.relay}</span></li>
-
-</div>
-<div className="left-bottom" >
-
-<li><h4>Current Voltage</h4><span>{ parseFloat(data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].voltage).toFixed(1)}</span></li>
-<li><h4>Ampere</h4><span> {data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].batteryampere} </span></li>
-</div>
-    </div> 
-    <div className="right" >
-
-<div  style={{marginTop:"1rem"}} >
-    <ReactSpeedometer
-    maxValue={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].UpperVoltageThreshold + 2.5}
-    value={data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].voltage}
-    valueFormat={'d'}
-    customSegmentStops={[ 0 ,data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].LowerVoltageThreshold / 1.5  ,   data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].LowerVoltageThreshold ,  data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].UpperVoltageThreshold ,  data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].UpperVoltageThreshold + 2.5]}
-    style={{marginTop:"1rem" ,}}
-    textColor={"red"}
-    width={200}
-    height={110}
-
-    segmentColors={[
-        "#bf616a",
-        "#d08770",
-        "#ebcb8b",
-        "#a3be8c",
-        "#b48ead",
-      ]}
-    
-  
-  />
- 
- 
-
-
-  </div>
-  <span>{moment(data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].reading_time).format("dddd, MMMM Do YYYY, h:mm:ss a")}</span> 
-
-
-
-  
-
-  {(() => {
-        if (data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].voltage < data.sensors.filter(sets => sets.location === number.relayNetworkName)[1].voltage) {
-             return (
-          sub(data.sensors.filter(sets => sets.location === number.relayNetworkName)[1].voltage , data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].voltage ,  data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].LowerVoltageThreshold)
-             )
-        }  else {
-          return (
-           null
-          )
-        }
-      })()}
-
-
-
-</div> 
-
-
-    </div>
-
-  
-
-</div>
-
-
-
-
-
-
-)}
-
-<div className="flex-2" >
-
-<Notifications id={params.relay}/>
-
-
-</div>
- 
-
-
-
-
-  </div>
-
-  {data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay).map(number =>
-
-
-<Graph  relayData={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} data={data.sensors.filter(sets => sets.location === number.relayNetworkName)} />
-
-
-
-
-)}
-
-<Users id={params.id} relayData={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} relay={params.relay} />
-
-<Comment  network={params.id} relay={params.relay}  />
-
-<Json  sens={data.sensors}  id={params.id} sensor={data.sensors} data ={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} relay={params.relay} />
- 
- 
- </Section >
-
-        
+          {data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay).map(number =>
+          
+          <div className="flex-1" >
+          
+              <div className="top" >
+          
+          <div className="left" >
+          <div className="left-top" >
+          <i class="fas fa-broadcast-tower"></i>
+          
+          <li><span>Relay Name</span><span>{params.relay}</span></li>
+          
+          </div>
+          <div className="left-bottom" >
+          
+          <li><h4>Current Voltage</h4><span>{ parseFloat(data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].voltage).toFixed(1)}</span></li>
+          <li><h4>Ampere</h4><span> {data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].batteryampere} </span></li>
+          </div>
+              </div> 
+              <div className="right" >
+          
+          <div  style={{marginTop:"1rem"}} >
+              <ReactSpeedometer
+              maxValue={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].UpperVoltageThreshold + 2.5}
+              value={data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].voltage}
+              valueFormat={'d'}
+              customSegmentStops={[ 0 ,data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].LowerVoltageThreshold / 1.5  ,   data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].LowerVoltageThreshold ,  data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].UpperVoltageThreshold ,  data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].UpperVoltageThreshold + 2.5]}
+              style={{marginTop:"1rem" ,}}
+              textColor={"red"}
+              width={200}
+              height={110}
+          
+              segmentColors={[
+                  "#bf616a",
+                  "#d08770",
+                  "#ebcb8b",
+                  "#a3be8c",
+                  "#b48ead",
+                ]}
+              
+            
+            />
+           
+           
+          
+          
+            </div>
+            <span>{moment(data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].reading_time).format("dddd, MMMM Do YYYY, h:mm:ss a")}</span> 
+          
+          
+          
+            
+          
+            {(() => {
+                  if (data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].voltage < data.sensors.filter(sets => sets.location === number.relayNetworkName)[1].voltage) {
+                       return (
+                    sub(data.sensors.filter(sets => sets.location === number.relayNetworkName)[1].voltage , data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].voltage ,  data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].LowerVoltageThreshold)
+                       )
+                  }  else {
+                    return (
+                     null
+                    )
+                  }
+                })()}
+          
+          
+          
+          </div> 
+          
+          
+              </div>
+          
+            
+          
+          </div>
+          
+          
+          
+          
+          
+          
+          )}
+          
+          <div className="flex-2" >
+          
+          <Notifications id={params.relay}/>
+          
+          
+          </div>
+           
+          
+          
+          
+          
+            </div>
+          
+            {data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay).map(number =>
+          
+          
+          <Graph  relayData={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} data={data.sensors.filter(sets => sets.location === number.relayNetworkName)} />
+          
+          
+          
+          
+          )}
+          
+          <Users id={params.id} relayData={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} relay={params.relay} />
+          
+          <Comment  network={params.id} relay={params.relay}  />
+          
+          <Json  sens={data.sensors}  id={params.id} sensor={data.sensors} data ={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} relay={params.relay} />
+           
+           
+           </Section >
+   )
    
+   
+
+   }
+   
+ 
+
+
+ 
   </>
        )}
       

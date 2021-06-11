@@ -153,12 +153,16 @@ const passport = require("passport");
 
     try {
 
+      console.log(req.params.id)
+
 
      const data = await    Network.findOne({networkName: req.params.id})
 
+     
+    
 
 
-     const sensors = await    Sensor.find({network: req.params.id}).sort({reading_time:-1})
+     const sensors = await    Sensor.find({network: req.params.id , network: req.params.id }).sort({reading_time:-1})
 
      const set = {
        sensors : sensors,
@@ -671,7 +675,7 @@ async (req, res) => {
       
       const err=   sensor.filter(sets => sets.location ===  element.location) 
          const set =  err.slice(0, 1)
-         console.log(set)
+        
          if(set.length === 0){
 
          
