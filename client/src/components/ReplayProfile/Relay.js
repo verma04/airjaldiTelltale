@@ -87,6 +87,27 @@ const params = useParams()
       }
     
     );
+
+    const sub = ( one , zero , lower) => {
+      const avg =  one - zero
+      const avg1 = zero-(lower -1)
+
+    const   set =  (avg1/avg)
+
+    var hours = Math.trunc(set/60);
+    var minutes = set % 60;
+    // console.log(hours +":"+ minutes);
+
+    return (
+      <div style={{marginTop:"2rem", fontFamily:"Montserrat-Bold" , color:"Orange"}} >
+      {parseFloat(hours)}:Hours
+      &nbsp;
+        {minutes.toFixed(0)}:Minutes
+      </div>
+    )
+
+      // var newDateObj = moment(oldDateObj).add(30, 'm').toDate();
+    }
  
 
     return (
@@ -124,7 +145,7 @@ const params = useParams()
 </div>
     </div> 
     <div className="right" >
-{console.log()}
+
 <div  style={{marginTop:"1rem"}} >
     <ReactSpeedometer
     maxValue={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].UpperVoltageThreshold + 2.5}
@@ -147,10 +168,30 @@ const params = useParams()
   
   />
  
- <span>{moment(data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].reading_time).format("dddd, MMMM Do YYYY, h:mm:ss a")}</span> 
+ 
 
 
   </div>
+  <span>{moment(data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].reading_time).format("dddd, MMMM Do YYYY, h:mm:ss a")}</span> 
+
+
+
+  
+
+  {(() => {
+        if (data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].voltage < data.sensors.filter(sets => sets.location === number.relayNetworkName)[1].voltage) {
+             return (
+          sub(data.sensors.filter(sets => sets.location === number.relayNetworkName)[1].voltage , data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].voltage ,  data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)[0].LowerVoltageThreshold)
+             )
+        }  else {
+          return (
+           null
+          )
+        }
+      })()}
+
+
+
 </div> 
 
 

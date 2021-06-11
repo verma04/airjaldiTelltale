@@ -101,7 +101,21 @@ function Dash({id}) {
      <ul>
                     <li className="net_name" >{number.location}</li>
                     <li>{number.network}</li>
-                    <li>The network needs your attention</li>
+                     {console.log(number.message)}
+                     
+                     {number.message === undefined?
+                     (
+                      <li>Sensor is Discharged</li>
+                     )
+                     :
+                     (
+                      <li>{number.message}</li>
+                     )
+
+                     }
+                  
+            
+                   
                 </ul>
    <ReactSpeedometer
     maxValue={16}

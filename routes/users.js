@@ -8,7 +8,7 @@ const bcrypt = require("bcryptjs");
 const moment = require('moment')
 const jwt = require("jsonwebtoken");
 const keys = require("../config/keys");
-const passport = require("passport");
+const mongoose = require("mongoose");
 const test = require("../models/Notifications");
 const Network = require("../models/Network");
 const Notifications = require("../models/Notifications");
@@ -16,6 +16,8 @@ const Sensor = require("../models/Sensor");
 const RelayUser = require("../models/RelayUser");
 const auth = require('../middleware/auth');
 
+
+const passport = require("passport");
   router.post(
     '/login',
     check('email', 'Please include a valid email').isEmail(),
@@ -156,7 +158,7 @@ const auth = require('../middleware/auth');
 
 
 
-     const sensors = await    Sensor.find({network: req.params.id}).sort({reading_time:-1}).limit(200)
+     const sensors = await    Sensor.find({network: req.params.id}).sort({reading_time:-1})
 
      const set = {
        sensors : sensors,
@@ -651,10 +653,13 @@ async (req, res) => {
      const final = []
 
      data.forEach(element => {
-
-      arr.push(...element.relayNetwork)
+      
+      arr.push(...element.relayNetwork.map(t => ({ UpperVoltageThreshold: t.UpperVoltageThreshold, LowerVoltageThreshold: t.LowerVoltageThreshold , location:t.relayNetworkName,network: element.networkName })) )
+     
        
      });
+ 
+   
      const senor =  await Sensor.find().sort({reading_time:-1}).limit(100)
        const sensor = senor
 
@@ -664,15 +669,27 @@ async (req, res) => {
 
       
       
-      const err=   sensor.filter(sets => sets.location ===  element.relayNetworkName) 
+      const err=   sensor.filter(sets => sets.location ===  element.location) 
          const set =  err.slice(0, 1)
+         console.log(set)
          if(set.length === 0){
 
-          console.log( element.relayNetworkName , "sddsd")
+         
+     const set = {
+       voltage : 0,
+       ...element,
+       message: "Sensor is not Woking"
+     }
+     final.push(set)
+
+         
+       
            
          }else {
+         
          if(set[0].voltage < element.LowerVoltageThreshold  ) {
-           final.push(set[0])
+      
+          final.push(set[0])
          }
         }
      });
@@ -1367,5 +1384,60 @@ async  (req, res) => {
   
   });
 
+  
+
+  router.get("/getStatus",   
+
+  async  (req, res) => {
+        
+    
+  
+    
+      try {
+  
+    
+  
+
+ 
+  MongoClient.connect("mongodb+srv://amakien_team:FuWVJj1psE1l4i8x@telltail.3wrhr.mongodb.net/",
+  {
+    useUnifiedTopology: true,
+     useNewUrlParser: true,
+  
+  }).then((client) => {
+    const connect = client.db("sensordata")
+    console.log('sdds')
+    connect.collection('test').find().sort({reading_time:-1}).limit(200).toArray(function(err, names) {
+       
+  
+      
+
+      if(!err) {
+
+ res.json(names.slice(0, 10))
+        
+      }
+  })
+}).catch((err) => {
+  
+    // Printing the error message
+    console.log(err.Message);
+  })
+  
+    
+
+
+  
+  
+      
+      } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+      }
+        
+       
+    
+    
+    });
 
 module.exports = router;

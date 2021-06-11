@@ -113,7 +113,7 @@ toast.error("Upload Image")
     })
           const file = await res.json()
           let link = file.secure_url
-           console.log(link)
+          
        await   setImage(link)
        }
   

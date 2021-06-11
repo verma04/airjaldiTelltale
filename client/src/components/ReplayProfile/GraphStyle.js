@@ -63,12 +63,11 @@
   position: relative;
 
   .picker {
-      height: 10rem;
+ height: 10rem;
       position:absolute;
-  display:  flex;
+  display:  none;
   justify-content: center;
-    top: -5rem;
-    right: 4rem;
+    
     border: 1px solid #ECE9F1;
     label {
         font-family: Montserrat-Bold;

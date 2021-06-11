@@ -568,7 +568,7 @@ height: 30%;
   justify-content: center;
   align-items: center;
   width: 100%;
-  border:1px solid red;
+margin-top: 1rem;;
   flex-direction: column;
   .flex {
    
@@ -677,6 +677,10 @@ flex-direction: column;
 height:  100%;
 width: 49%;
 
+span {
+  text-align: center;
+}
+
 }
    }
  
@@ -693,7 +697,7 @@ width: 49%;
   flex-direction: column;
  width: 100%;
   .notifications {
-    height: 20rem;
+    height: 25rem;
      background-color:  ${props => props.theme.colors.background};
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
   border-radius: 0.5rem;
