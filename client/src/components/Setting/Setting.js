@@ -108,7 +108,7 @@ import Loading from '../Loading/Loading';
   const { data, status  } = useQuery("DashboardDet" , fetchDashboardDet )
   return (
 
-    <div>
+    <>
        {status === "error" && <p>Error fetching data</p>}
         {status === "loading" && 
        <Loading/>
@@ -168,7 +168,7 @@ import Loading from '../Loading/Loading';
    </div>
    </Section>
         )}
-  </div>
+  </>
   )
 }
 

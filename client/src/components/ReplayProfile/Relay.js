@@ -72,18 +72,35 @@ const data = [
 const fetchNews = async (id) => {
 
     const idd = id.queryKey[1]
+ 
    
-    const res = await fetch(`/api/getNetworkProfile/${idd}`);
+    const res = await fetch(`/api/getNetworkProfile/${idd.id}/${idd.relay}`);
+    return res.json();
+  };
+  const relayGraph = async (id) => {
+
+    const idd = id.queryKey[1]
+ 
+   
+    const res = await fetch(`/api/relayGraph/${idd.relay}`);
     return res.json();
   };
 function Dash({}) {
   let history = useHistory();
 const params = useParams()
   
-    const { data, status  , isFetching } = useQuery(["Stories" , params.id ], fetchNews ,
+    const { data, status  , isFetching } = useQuery(["RelyProfile" , params ], fetchNews ,
     {
        
-        refetchInterval: 500,
+        refetchInterval: 1000,
+      }
+    
+    );
+
+    const { data:data1, status:status1  } = useQuery(["relayGraph" , params ], relayGraph ,
+    {
+       
+        refetchInterval: 1000,
       }
     
     );
@@ -232,13 +249,26 @@ const params = useParams()
             </div>
           
             {data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay).map(number =>
+          <>
+            {status1 === "error" && <p>Error fetching data</p>}
+        {status1 === "loading" && 
+        
+ <div className="loading"  >
+   
+   <img src="https://res.cloudinary.com/dzcmadjl1/image/upload/v1615785167/cm5bk5luzcwquerawyfc.gif" ></img>
+ 
+ </div>
+        
+        }
+        {status1 === "success" && (
+
+   <>
+          <Graph  relayData={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} data={data1} />
           
+          </>
+        )}
           
-          <Graph  relayData={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} data={data.sensors.filter(sets => sets.location === number.relayNetworkName)} />
-          
-          
-          
-          
+          </>
           )}
           
           <Users id={params.id} relayData={data.data.relayNetwork.filter(sets => sets.relayNetworkName === params.relay)} relay={params.relay} />

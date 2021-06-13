@@ -511,6 +511,19 @@ height: 30%;
 
       }
 
+      .loading {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 400px;
+       
+        img {
+          width: 2rem;
+        }
+      }
+
       .modal {
  /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -1075,6 +1088,18 @@ height: 30%;
         
 
       }
+      .loading {
+
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 400px;
+
+img {
+  width: 2rem;
+}
+}
 
       .modal {
  /* Hidden by default */

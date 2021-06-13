@@ -144,7 +144,7 @@ const passport = require("passport");
 
 
 
-  router.get( '/getNetworkProfile/:id',
+  router.get( '/getNetworkProfile/:id/:relay',
 
   async (req, res) => {
 
@@ -153,7 +153,7 @@ const passport = require("passport");
 
     try {
 
-      console.log(req.params.id)
+      console.log(req.params.relay)
 
 
      const data = await    Network.findOne({networkName: req.params.id})
@@ -162,7 +162,7 @@ const passport = require("passport");
     
 
 
-     const sensors = await    Sensor.find({network: req.params.id , network: req.params.id }).sort({reading_time:-1})
+     const sensors = await    Sensor.find({location:req.params.relay }).sort({reading_time:-1}).limit(2)
 
      const set = {
        sensors : sensors,
@@ -183,6 +183,81 @@ const passport = require("passport");
   }
 );
 
+
+router.get( '/relayGraph/:relay',
+
+async (req, res) => {
+
+
+
+
+  try {
+
+    console.log(req.params.relay)
+
+
+   
+
+   
+  
+
+
+   const sensors = await    Sensor.find({location:req.params.relay }).sort({reading_time:-1})
+
+  
+   res.json(sensors)
+
+
+
+
+
+
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+}
+);
+
+router.get( '/getNetworkProfile/:id/',
+
+async (req, res) => {
+
+
+
+
+  try {
+
+   
+
+
+   const data = await    Network.findOne({networkName: req.params.id})
+
+  
+  
+
+
+   const sensors = await    Sensor.find({network:req.params.id }).sort({reading_time:-1}).limit(data.relayNetwork.length)
+
+   const set = {
+     sensors : sensors,
+     data:data
+   }
+   res.json(set)
+
+
+
+
+
+
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+}
+);
 
 router.get( '/getReportList/:id',
 

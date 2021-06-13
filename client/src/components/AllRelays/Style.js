@@ -171,7 +171,7 @@ li:nth-child(5) {
 
 @media (max-width: 787px) {
   
-  display: flex;
+    display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -185,13 +185,13 @@ li:nth-child(5) {
        background-color:  ${props => props.theme.colors.background};
 box-shadow: 0px 0px 2px rgba(145, 158, 171, 0.24), 0px 16px 32px -4px rgba(145, 158, 171, 0.24);
 border-radius: 15px;
-height: 40rem;
+
 
 .top {
     display: flex;
     justify-content: space-between;
     width: 90%;
-    height: 10%;
+    height: 5rem;
     align-items: center;
     .head {
         h2 {
@@ -204,9 +204,9 @@ height: 40rem;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-        width: 50%;
+        width: 20%;
         height: 70%;
-        background: #ECE9F1;
+        background-color:  ${props => props.theme.colors.dark2};
   i {
 color: #5B5B5B;
 font-size: 1.4rem;
@@ -227,12 +227,12 @@ font-size: 1.4rem;
     flex-direction: column;
     align-items: center;
     .data-head {
-        display: none;
+        display: flex;
     justify-content: flex-start;
     width: 100%;
-    height: 10%;
+    height: 4rem;
     align-items: center; 
-    background: #F4F6F8;
+    background-color:  ${props => props.theme.colors.dark2};
 border-radius: 8px;
 li {
     list-style: none;
@@ -260,43 +260,32 @@ li:nth-child(5) {
     }
 
     ul {
-        margin-bottom: 2rem;
         display: flex;
     justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
     width: 100%;
     height: 12rem;
-  
-    align-items: center;
-    margin-top : 1rem ;
-    margin-bottom: 1rem;
-    ;
+    align-items: center; 
 
 border-radius: 8px;
 li {
     list-style: none;
 }
 li:nth-child(1) {
-    width: 100%;
-    display: none;
+    width: 10%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 li:nth-child(2) {
-    width: 100%;
-    text-align: center;
-    font-family: Montserrat-Bold;
+    width: 17%;
 }
 li:nth-child(3) {
-    width: 100%;
-    text-align: center;
+    width: 25%;
 }
 li:nth-child(4) {
     
     width: 40%;
-
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -314,9 +303,9 @@ li:nth-child(4) {
    
 }
 li:nth-child(5) {
-  
+    
     width: 20%;
-
+    height: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -336,6 +325,7 @@ li:nth-child(5) {
     }
 }
   }
+    
     
   
 }

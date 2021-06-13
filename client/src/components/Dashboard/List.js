@@ -53,7 +53,7 @@ const data = [
 const fetchzone = async (id) => {
     
   const idd = id.queryKey[1]
-  console.log(id.queryKey[1])
+ 
   const res = await fetch(`/api/getdata/${id.queryKey[1]}`);
     return res.json();
   };
@@ -101,7 +101,7 @@ function Dash({id}) {
      <ul>
                     <li className="net_name" >{number.location}</li>
                     <li>{number.network}</li>
-                     {console.log(number.message)}
+                    
                      
                      {number.message === undefined?
                      (
