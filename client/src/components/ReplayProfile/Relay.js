@@ -119,9 +119,9 @@ const params = useParams()
 
     return (
       <div style={{marginTop:"2rem", fontFamily:"Montserrat-Bold" , color:"Orange"}} >
-    Battery Will Die in :  {parseFloat(hours)}:HH
+    Battery Will Die in :  {parseFloat(hours)}:HR
       &nbsp;
-        {minutes.toFixed(0)}:MM
+        {minutes.toFixed(0)}:MIN
       </div>
     )
 
