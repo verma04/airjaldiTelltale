@@ -34,7 +34,7 @@ function Network() {
 
   <div className="flex-1" >
   <div className="head" >
-     <h3>Following relays need your attention</h3>
+     <h3>The following relays require your attention</h3>
  </div>
  <div className="zone" >
 

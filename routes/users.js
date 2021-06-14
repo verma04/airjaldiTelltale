@@ -757,7 +757,7 @@ async (req, res) => {
      const set = {
        voltage : 0,
        ...element,
-       message: "Sensor is not Woking"
+       message: "Sensor is not Working"
      }
      final.push(set)
 
