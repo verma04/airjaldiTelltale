@@ -106,6 +106,8 @@ const params = useParams()
     );
 
     const sub = ( one , zero , lower) => {
+
+      console.log(one , zero )
       const avg =  one - zero
       const avg1 = zero-(lower -1)
 
@@ -117,9 +119,9 @@ const params = useParams()
 
     return (
       <div style={{marginTop:"2rem", fontFamily:"Montserrat-Bold" , color:"Orange"}} >
-    Battery Will Die in :  {parseFloat(hours)}:Hours
+    Battery Will Die in :  {parseFloat(hours)}:HH
       &nbsp;
-        {minutes.toFixed(0)}:Minutes
+        {minutes.toFixed(0)}:MM
       </div>
     )
 
@@ -199,7 +201,7 @@ const params = useParams()
           
           
             </div>
-            <span>{moment(data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].reading_time).format("dddd, MMMM Do YYYY, h:mm:ss a")}</span> 
+            <span>{moment(data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].reading_time).format("dddd, MMMM Do YYYY, h:mm")}</span> 
           
           
           

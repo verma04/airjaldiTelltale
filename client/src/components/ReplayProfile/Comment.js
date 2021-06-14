@@ -10,7 +10,7 @@ import {stateToHTML} from 'draft-js-export-html';
 import moment from 'moment'
 const convertFromJSONToHTML = (text) => {
 
-    console.log(text)
+    
       try{
           return { __html: stateToHTML(convertFromRaw(text))}
         } catch(exp) {
