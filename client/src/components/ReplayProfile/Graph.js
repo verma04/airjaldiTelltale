@@ -85,7 +85,7 @@ return (
        {result.length === 0
   ? (
 <div  className="notFound" >
-<h2>No Record Found</h2>
+<h2>Current day Graph is not available you check previous date</h2>
     </div>
   ):
   (
