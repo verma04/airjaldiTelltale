@@ -120,7 +120,7 @@ const params = useParams()
 
 <li>Sr. No.</li>
 
-
+<li>Location</li>
 <li>Realy Name</li>
 <li>Status</li>
 
@@ -136,7 +136,7 @@ const params = useParams()
 <ul>
 
 <li>{index +1}.</li>
-
+<li></li>
 <li>{number.relayNetworkName}</li>
 <li>
 
