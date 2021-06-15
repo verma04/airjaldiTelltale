@@ -119,8 +119,9 @@ const params = useParams()
 <div className="data-head" >
 
 <li>Sr. No.</li>
+<li>Network</li>
 <li>Realy Name</li>
-<li>Location</li>
+
 <li>Status</li>
 
 <li>Action</li>
@@ -134,9 +135,8 @@ const params = useParams()
 
 
 <li>{index +1}.</li>
-<li>{number.relayNetworkName}</li>
 <li>{params.id}</li>
-
+<li>{number.relayNetworkName}</li>
 <li>
 
 
