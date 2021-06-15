@@ -529,14 +529,14 @@ async (req, res) => {
 
     net.forEach(element => {
    
-
+    
       arr.push(...element.relayNetwork)
       
     });
     
     const sensors = []
   
-    const set = await Sensor.find({}).sort({reading_time:-1}).limit(1000)
+    const set = await Sensor.find({}).sort({reading_time:-1})
   
     
 

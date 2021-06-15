@@ -98,7 +98,7 @@ import UpdatePassword from './components/password/password'
        <PrivteRoute  exact path="/network/:id" component={Profile} />
        <PrivteRoute  exact path="/network/:id/:relay" component={Relay} />
          <PrivteRoute  exact path="/users" component={Users} />
-         {/* <PrivteRoute  exact path="/allrelays" component={AllRely} /> */}
+         <PrivteRoute  exact path="/allrelays" component={AllRely} />
        <PrivteRoute  exact path="/reports" component={Reports} />
        <PrivteRoute  exact path="/setting" component={Settings} />
        <PrivteRoute  exact path="/update-password" component={UpdatePassword} />

@@ -121,7 +121,7 @@ const params = useParams()
 <li>Sr. No.</li>
 
 <li>Location</li>
-<li>Realy Name</li>
+<li>Relay Name</li>
 <li>Status</li>
 
 <li>Action</li>
