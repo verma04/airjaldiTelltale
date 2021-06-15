@@ -134,8 +134,9 @@ const params = useParams()
 
 
 <li>{index +1}.</li>
-<li>{params.id}</li>
 <li>{number.relayNetworkName}</li>
+<li>{params.id}</li>
+
 <li>
 
 
