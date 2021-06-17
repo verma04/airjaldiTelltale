@@ -201,7 +201,7 @@ const params = useParams()
           
           
             </div>
-            <span>{moment(data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].reading_time).format("dddd, MMMM Do YYYY, h:mm")}</span> 
+            <span>{moment(data.sensors.filter(sets => sets.location === number.relayNetworkName)[0].reading_time).format("dddd, MMMM Do YYYY, h:mm a")}</span> 
           
           
           
