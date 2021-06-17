@@ -117,14 +117,31 @@ const params = useParams()
 
     var hours = Math.trunc(set/60);
     var minutes = set % 60;
-    // console.log(hours +":"+ minutes);
-  console.log(hours ,"sdddddddddddddddd")
+  
+
     return (
-      <div style={{marginTop:"2rem", fontFamily:"Montserrat-Bold" , color:"Orange"}} >
+  
+   <>
+   {hours === 0 && minutes === 0  ?
+   (
+<div style={{marginTop:"2rem", fontFamily:"Montserrat-Bold" , color:"Orange"}} >
     Battery Will Die in :  {parseFloat(hours)}:HR
       &nbsp;
         {minutes.toFixed(0)}:MIN
       </div>
+   )
+   :
+   (
+<div style={{marginTop:"2rem", fontFamily:"Montserrat-Bold" , color:"Orange"}} >
+    Battery Will Die in :  {parseFloat(hours)}:HR
+      &nbsp;
+        {minutes.toFixed(0)}:MIN
+      </div>
+   )
+
+   }
+      
+      </>
     )
 
       // var newDateObj = moment(oldDateObj).add(30, 'm').toDate();
