@@ -113,7 +113,7 @@ const params = useParams()
 
     const   set =  (avg1/avg)
 
-    console.log(set)
+    console.log(set , 'dsd')
 
     var hours = Math.trunc(set/60);
     var minutes = set % 60;
