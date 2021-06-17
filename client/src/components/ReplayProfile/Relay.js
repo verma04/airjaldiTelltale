@@ -118,7 +118,7 @@ const params = useParams()
     var hours = Math.trunc(set/60);
     var minutes = set % 60;
     // console.log(hours +":"+ minutes);
-
+  console.log(hours ,  minutes)
     return (
       <div style={{marginTop:"2rem", fontFamily:"Montserrat-Bold" , color:"Orange"}} >
     Battery Will Die in :  {parseFloat(hours)}:HR
