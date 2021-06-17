@@ -124,8 +124,8 @@ const params = useParams()
    <>
    {hours === 0 && minutes === 0  ?
    (
-<div style={{marginTop:"2rem", fontFamily:"Montserrat-Bold" , color:"Orange"}} >
-    Battery Will Die in :  {parseFloat(hours)}:HR
+<div style={{marginTop:"2rem", fontFamily:"Montserrat-Bold" , color:"Red"}} >
+    Battery Died
       &nbsp;
         {minutes.toFixed(0)}:MIN
       </div>
