@@ -113,6 +113,8 @@ const params = useParams()
 
     const   set =  (avg1/avg)
 
+    console.log(set)
+
     var hours = Math.trunc(set/60);
     var minutes = set % 60;
     // console.log(hours +":"+ minutes);
