@@ -113,7 +113,7 @@ const params = useParams()
 
     const   set =  (avg1/avg)
 
-    console.log(set , 'dsddsssssssssssssssssssss')
+   
 
     var hours = Math.trunc(set/60);
     var minutes = set % 60;
@@ -122,7 +122,7 @@ const params = useParams()
     return (
   
    <>
-   {hours === 0 && minutes === 0  ?
+   {parseFloat(hours) === 0 && parseFloat(minutes) === 0  ?
    (
 <div style={{marginTop:"2rem", fontFamily:"Montserrat-Bold" , color:"Red"}} >
     Battery Died
