@@ -69,7 +69,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "dev": "PORT=1234 react-scripts start ",
+    "start": "PORT=1234 react-scripts start ",
     "server": " NPM_CONFIG_PRODUCTION=false npm install --prefix nodemon server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
