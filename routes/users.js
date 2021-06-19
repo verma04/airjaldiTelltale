@@ -1126,6 +1126,10 @@ router.post(
           if (err) throw err;
           res.json({ 
           token,
+          id:user.id ,
+          avatar: user.avatar ,
+          email:user.email
+
          
         });
         }
