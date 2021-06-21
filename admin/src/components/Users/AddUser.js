@@ -186,7 +186,7 @@ toast.error("Upload Image")
  </div>
 
  <div   className="right" >
-  <label>Name</label>
+  <label>Namee</label>
   <input  {...register("name", { required: true })}  placeholder="Enter Name" ></input>
 
  </div>
