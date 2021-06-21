@@ -33,7 +33,10 @@ function AddUser({setAdd}) {
 
     const { data:data1, status:status1  } = useQuery("fetchUsersNetwork" , fetchUsersNetwork ,
   
-    
+    {
+       
+      refetchInterval: 1000,
+    }
     );
 
      
@@ -186,7 +189,7 @@ toast.error("Upload Image")
  </div>
 
  <div   className="right" >
-  <label>Namee</label>
+  <label>Name</label>
   <input  {...register("name", { required: true })}  placeholder="Enter Name" ></input>
 
  </div>
