@@ -65,7 +65,7 @@ function AddUser({setAdd}) {
 toast.error("Upload Image")
  }
   else if ( img==="https://res.cloudinary.com/dzcmadjl1/image/upload/v1610515663/HimTrek/nkvy6wlmekzb80khdi2f.gif" ) (
-  toast.error("Image Uploading")
+  toast.error(" Image Uploading ")
  )
   
  else {
