@@ -459,7 +459,7 @@ async (req, res) => {
 
   try {
 
-    const net   = await   Network.find({})
+    const network   = await   Network.find({})
 
 
    
@@ -467,7 +467,7 @@ async (req, res) => {
    
      
 
-    res.json(net)
+    res.json(network)
   
     
 
