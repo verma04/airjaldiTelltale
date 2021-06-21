@@ -450,6 +450,43 @@ async (req, res) => {
 }
 )
 
+router.get('/UsersNetwork',
+
+async (req, res) => {
+
+
+
+
+  try {
+
+    const net   = await   Network.find({})
+
+
+   
+    
+   
+     
+
+    res.json(net)
+  
+    
+
+
+
+
+
+          
+
+
+
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+}
+)
+
 router.get('/allrelay',
 
 async (req, res) => {
@@ -504,9 +541,43 @@ router.post('/addUser',
 
 async (req, res) => {
 
+// console.log(req.body.network)
+const arr = []
+console.log(req.body.network.length)
+//  if(req.body.network.length === 0)
 
+req.body.network.forEach(element => {
+      //  console.log(element.relayNetwork)
+       
+       element.relayNetwork.forEach(element => {
+          const data = [element]
+           const   relayNetwork =  data.map(t => ({ relayName: t.relayNetworkName})) 
+            arr.push(...relayNetwork)
+          });
 
+   });
 
+   arr.push(...req.body.relayNetworks)
+
+  console.log(arr)
+  let newArray = [];
+  let uniqueObject = {};
+  for (let i in arr) {
+      
+    // Extract the title
+    objTitle = arr[i]['relayName'];
+
+    // Use the title as the index
+    uniqueObject[objTitle] = arr[i];
+}
+  
+// Loop to push unique object into array
+for (i in uniqueObject) {
+    newArray.push(uniqueObject[i]);
+}
+  
+// Display the unique objects
+console.log(newArray);
   try {
     const { email} = req.body;
     console.log(req.body)
@@ -519,8 +590,12 @@ async (req, res) => {
     }
     else {
   
+      const set = {
+          ...req.body , 
+          relayNetwork: newArray
+      }
  
-    const data = await RelayUser.create(req.body)
+    const data = await RelayUser.create(set)
  
     res.json(data)
 

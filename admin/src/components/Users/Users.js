@@ -107,7 +107,7 @@ const delnews = async (id) => {
    </li>
    
    <li>
-   <span id="relay"  >Assign Relay</span> 
+   {/* <span id="relay"  >Assign Relay</span>  */}
    <span id="delete" onClick={() => toggleMenu(number._id) } >Delete</span> 
    
    </li>

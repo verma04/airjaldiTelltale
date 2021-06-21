@@ -125,7 +125,7 @@ import UpdatePassword from './components/password/password'
   
  </Hydrate>
 
- {/* <ReactQueryDevtools  /> */}
+ <ReactQueryDevtools  />
  </QueryClientProvider>
 
   </ThemeProvider>

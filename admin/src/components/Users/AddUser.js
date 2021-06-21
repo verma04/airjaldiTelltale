@@ -13,6 +13,14 @@ const fetchUsersRealy = async (id) => {
     return res.json();
   };
 
+  const fetchUsersNetwork = async (id) => {
+
+   
+   
+    const res = await fetch(`/api/UsersNetwork`);
+    return res.json();
+  };
+
 function AddUser({setAdd}) {
 
     const { data, status  , isFetching } = useQuery("UsersRealy" , fetchUsersRealy ,
@@ -22,7 +30,16 @@ function AddUser({setAdd}) {
       }
     
     );
+
+    const { data:data1, status:status1  } = useQuery("fetchUsersNetwork" , fetchUsersNetwork ,
+  
+    
+    );
+
+     
+
    const [relay , setrelay ] = useState('')
+   const [network , setnetwork ] = useState('')
    const [img , setImage ] = useState('https://res.cloudinary.com/airjaldi/image/upload/v1622518068/avataaars-2_cg07t0.png')
    const {
     register,
@@ -38,6 +55,9 @@ function AddUser({setAdd}) {
    const    handleChange = (selectedOptions) => {
     setrelay(selectedOptions)
       }
+      const    handleChange1 = (selectedOptions) => {
+        setnetwork(selectedOptions)
+          }
     const onSubmit = data =>  {
     
       if(img === "https://res.cloudinary.com/airjaldi/image/upload/v1622518068/avataaars-2_cg07t0.png")
@@ -47,12 +67,22 @@ toast.error("Upload Image")
   else if ( img==="https://res.cloudinary.com/dzcmadjl1/image/upload/v1610515663/HimTrek/nkvy6wlmekzb80khdi2f.gif" ) (
   toast.error("Image Uploading")
  )
-  else if ( relay ==="" ) {
-  toast.error("Enter Network Relay")
- }  
+  
  else {
    data.avatar = img 
-   data.relayNetwork =  relay.map(t => ({ relayName: t.value})) 
+   if( relay === '' ) {
+        data.relayNetworks = []
+   }
+   else {
+   data.relayNetworks =  relay.map(t => ({ relayName: t.value})) 
+   }
+   if( network === '' ) {
+    data.network = []
+   }
+   else {
+   data.network  = network.map(t => ({  relayNetwork: t.relayNetwork})) 
+   }
+  
    senddata(data);
  }
     
@@ -115,8 +145,14 @@ toast.error("Upload Image")
        await   setImage(link)
        }
   
+           
+       
 
-    
+     
+       
+  
+
+
     return (
         <Section>
           <ToastContainer/>
@@ -203,7 +239,33 @@ toast.error("Upload Image")
      
         
         }
- {status === "success" && (
+ {status1 === "success" && (
+
+<div    className="input-field" >
+<div className="left" >
+
+<i className="fas fa-network-wired"></i>
+</div>
+
+<div className="right" >
+ <label> Select  Network </label>
+ <Select
+    value={network}
+    isMulti
+    onChange={handleChange1}
+    name="realy"
+    options={data1.map(t => ({ value: t.networkName, label: t.networkName , relayNetwork: t.relayNetwork })) } 
+    className="basic-multi-select"
+    classNamePrefix="select"
+  />
+    
+</div>
+
+ </div>
+ 
+ )}
+
+{status === "success" && (
 
 <div    className="input-field" >
 <div className="left" >
@@ -228,6 +290,8 @@ toast.error("Upload Image")
  </div>
  
  )}
+
+ 
   
 <div  id={errors.password ? "active" : ""}   className="input-field" >
 <div className="left" >
