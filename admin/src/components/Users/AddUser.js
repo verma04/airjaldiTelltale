@@ -17,7 +17,7 @@ const fetchUsersRealy = async (id) => {
 
    
    
-    const res = await fetch(`/api/UsersNetwork`);
+    const res = await fetch(`/api/getNetwork`);
     return res.json();
   };
 
