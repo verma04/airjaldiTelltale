@@ -98,7 +98,7 @@ import { GoogleFonts } from "next-google-fonts";
   
  </Hydrate>
 
- <ReactQueryDevtools  />
+ {/* <ReactQueryDevtools  /> */}
  </QueryClientProvider>
 
   </ThemeProvider>

@@ -43,7 +43,7 @@ function AddUser({setAdd}) {
 
    const [relay , setrelay ] = useState('')
    const [network , setnetwork ] = useState('')
-   const [img , setImage ] = useState('https://res.cloudinary.com/airjaldi/image/upload/v1622518068/avataaars-2_cg07t0.png')
+   const [img , setImage ] = useState('https://res.cloudinary.com/dzcmadjl1/image/upload/v1618642890/izo5ri94zqjviheltfps.jpg')
    const {
     register,
     formState: { errors },
@@ -63,15 +63,9 @@ function AddUser({setAdd}) {
           }
     const onSubmit = data =>  {
     
-      if(img === "https://res.cloudinary.com/airjaldi/image/upload/v1622518068/avataaars-2_cg07t0.png")
- {
-toast.error("Upload Image")
- }
-  else if ( img==="https://res.cloudinary.com/dzcmadjl1/image/upload/v1610515663/HimTrek/nkvy6wlmekzb80khdi2f.gif" ) (
-  toast.error(" Image Uploading ")
- )
+ 
   
- else {
+ 
    data.avatar = img 
    if( relay === '' ) {
         data.relayNetworks = []
@@ -87,7 +81,7 @@ toast.error("Upload Image")
    }
   
    senddata(data);
- }
+ 
     
     } 
 
